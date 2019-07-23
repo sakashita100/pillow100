@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>音声データの読み込みと再生</title>
+
+<script>
+
+// HTMLファイル読み込み完了後に実行される処理
+window.addEventListener("load", function () {
+
+    // オーディオコンテクスト
+    var context = new AudioContext();
+
+    // 音声再生を行う関数の定義
+    function play ( context, audioBuf ) {
+        var duration = audioBuf.duration;          // 再生時間を取得
+        var src = context.createBufferSource();    // 音源ノード（AudioBufferSourceNode）を生成
+        src.buffer = audioBuf;                     // 音源ノードのオーディオバッファをファイル内容に設定
+        src.connect(context.destination);          // 音源ノードを音声出力ノードに接続
+        src.start(0, 0, duration);                 // 音源再生開始
+    }   
+
+    //オーディオファイルの読み込みの開始
+    loadAudioData( context, "./Sound/heart.wav", play);
+});
+
+
+////////////////////////////////////////////////////////////////
+// オーディオファイルの読み込みとデコードを行う
+////////////////////////////////////////////////////////////////
+function loadAudioData( context, filePath, callback ) {
+
+    var xhr = new XMLHttpRequest();    // XMLHttpRequestオブジェクト生成
+
+    // データ通信方式の設定
+    xhr.open("GET", filePath);    // GETメソッドでオーディオファイルと通信を行う
+    xhr.responseType = "arraybuffer";  // バイナリデータ形式でデータを取得する
+
+    // データ通信完了時の設定
+    xhr.onload = function () {
+        var arrayBuffer = xhr.response;    // ファイル内容を取得（バイナリデータ）
+        context.decodeAudioData(arrayBuffer, successCallback, errorCallback);    // バイナリデータをデコード（オーディオバッファを生成）
+        /**
+         * デコード成功時の処理
+         *   - ファイル情報の表示
+         *   - デコード結果の保存
+         *   - オーディオデータの正規化
+         */
+        function successCallback( audioBuf ) {
+            // ファイル情報の表示
+            console.log("[input file ] " + filePath);               // ファイルパス
+            console.log("[duration   ] " + audioBuf.duration + " s");    // 再生時間
+            console.log("[sample rate] " + audioBuf.sampleRate + " Hz"); // サンプリングレート
+
+            // オーディオデータの正規化（最大振幅を1として正規化）
+            var audioData = audioBuf.getChannelData(0);    // バッファ用配列の取得
+            var ymax = 0;    // 最大振幅
+            for (var i = 0; i < audioData.length; i++) {
+                var y = Math.abs( audioData[i] );
+                if (y > ymax) ymax = y;    // 最大振幅の更新
+            }
+            for (var i = 0; i < audioData.length; i++) {
+                audioData[i] /= ymax;    // 最大振幅を1としてオーディオデータを正規化
+            }
+            //コールバック関数の実行
+            callback( context, audioBuf );
+        };
+
+        /**
+         * デコード失敗時の処理
+         *   - エラー内容の表示
+         */
+        function errorCallback(error) {    
+            console.log( "[Error] audio file cannot be decoded (context.decodeAudioData())" );
+            console.log( error );
+        };
+    }
+
+    // データ通信開始
+    xhr.send();
+};
+
+</script>
+</head>
+<body></body>
+</html>
