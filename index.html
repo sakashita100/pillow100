@@ -53,7 +53,8 @@
             var source2 = context.createBufferSource();
             source1.buffer = buffer;
             source2.buffer = buffer;
-            source.connect(context.destination);
+            source1.connect(context.destination);
+            source2.connect(context.destination);
             if ( i % 4 == 0 ) { 
               source1.start(startTime + i * bps ); 
             }
