@@ -37,30 +37,19 @@
     // サウンドを再生
     var playSound = function(buffer) {  
         // source を作成
-        var source1 = context.createBufferSource();
-        var source2 = context.createBufferSource();
+        var source = context.createBufferSource();
         // buffer をセット
-        source1.buffer = snd[sn1];
-        source2.buffer = snd[sn2];
+        source.buffer = buffer;
         // context に connect
-        source1.connect(context.destination);
-        source2.connect(context.destination);
-
+        source.connect(context.destination);
         bps = 60 / form.tmp.value;
         var startTime = context.currentTime;
-        for ( i = 0 ; i < 10 * 60 / bps ; i++ ) {
-            var source1 = context.createBufferSource();
-            var source2 = context.createBufferSource();
-            source1.buffer = snd[sn1] ;
-            source2.buffer = snd[sn2] ;
-
-            source1.connect(context.destination);
-            source2.connect(context.destination);
+        for ( i = 0; i < 10 * 60 / bps; i++ ) {
+            var source = context.createBufferSource();
+            source.buffer = buffer;
+            source.connect(context.destination);
             if ( i % 4 == 0 ) { 
-                source1.start(startTime + i * bps ); 
-            }
-            else { 
-                source2.start(startTime + i * bps ); 
+                source.start(startTime + i * bps ); 
             }
         }
         // 再生
