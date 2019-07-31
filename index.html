@@ -1,88 +1,156 @@
 <!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, user-scalable=no" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<title>HeartBeat</title>
-<style>
-    #btn {
-      font-size: 4rem;
-      padding: 1rem 2rem;
-    }
-</style>
-
+<meta http-equiv="content-language" content="ja">
+<meta charset="UTF-8">
+<title>メトロノーム</title>
+<meta name="keywords" content="Web版簡易メトロノーム,歌の練習,楽器の練習,MM,BPM">
+<meta name="description" content="メトロノーム">
+<meta name="viewport" content="width=device-width" />
+<meta name="GENERATOR" content="JustSystems Homepage Builder Version 20.0.6.0 for Windows">
 <script>
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;  
-    var context = new AudioContext();
-    // Audio 用の buffer を読み込む
-    var getAudioBuffer = function(url, fn) {  
-        var req = new XMLHttpRequest();
-        // array buffer を指定
-        req.responseType = 'arraybuffer';
-        req.onreadystatechange = function() {
-            if (req.readyState === 4) {
-                if (req.status === 0 || req.status === 200) {
-                    // array buffer を audio buffer に変換
-                    context.decodeAudioData(req.response, function(buffer) {
-                        // コールバックを実行
-                        fn(buffer);
-                    });
-                }
-            }
-        };
-        req.open('GET', url, true);
-        req.send('');
-    };
+//window.onload = init;
+var context;
+var bufferLoader;
+  ind = "" ;
+  hy = 4 ;
+  sn1 = 0 ;
+  sn2 = 1 ;
+function init() {
+//if ( ind == "" ) { alert("音源ローディング中") ; return ; }
+  if ( ind == "srt" ) return ;
+  ind = "srt" ;
+  window.AudioContext = window.AudioContext || window.webkitAudioContext;
+  context = new AudioContext();
+  bufferLoader = new BufferLoader( context,[
+                          './Sound/heart.wav',
+                          './Sound/heart.wav',
+                          './Sound/heart.wav',
+//                     'sound/CAN.mp3',
+//                     'sound/FX5_1.wav',
+                          './Sound/heart.wav',
+//                     'sound/FX5_3.wav',
+                          './Sound/heart.wav',
+                          './Sound/heart.wav',
+                          './Sound/heart.wav',
+                          './Sound/heart.wav'
+//                     'sound/FX5_5.wav'
+                               ],finishedLoading );
+  bufferLoader.load();
+}
+function finishedLoading(bufferList) {
+  snd = Array() ;
+  for (i = 0 ; i < bufferList.length ; i++ ) { snd[i] = bufferList[i] ; }
+  srt() ;
+ }
+function srt() {
+  // Create two sources and play them both together.
+  source1 = context.createBufferSource();
+  source2 = context.createBufferSource();
+  source1.buffer = snd[sn1] ;
+  source2.buffer = snd[sn2] ;
 
-    // サウンドを再生
-    var playSound = function(buffer) {  
-        // source を作成
-        var source1 = context.createBufferSource();
-        var source2 = context.createBufferSource();
-        // buffer をセット
-        source1.buffer = buffer;
-        source2.buffer = buffer;
-        // context に connect
-        source1.connect(context.destination);
-        source2.connect(context.destination);
-        bps = 60 / form.tmp.value;
+  source1.connect(context.destination);
+  source2.connect(context.destination);
+  bps = 60 / form.tmp.value ;
+  
+  var startTime = context.currentTime ;
+  for ( i = 0 ; i < 10 * 60 / bps ; i++ ) {
+    var source1 = context.createBufferSource();
+    var source2 = context.createBufferSource();
+    source1.buffer = snd[sn1] ;
+    source2.buffer = snd[sn2] ;
 
-        var startTime = context.currentTime;
-        for ( i = 0; i < 10 * 60 / bps; i++ ) {
-            var source1 = context.createBufferSource();
-            var source2 = context.createBufferSource();
-            source1.buffer = buffer;
-            source2.buffer = buffer;
-            source1.connect(context.destination);
-            source2.connect(context.destination);
-            if ( i % 4 == 0 ) { 
-              source1.start(startTime + i * bps ); 
-            }
-            else {
-              source2.start(startTime + i * bps ); 
-            }
+    source1.connect(context.destination);
+    source2.connect(context.destination);
+    if ( i % hy== 0 ) { source1.start(startTime + i * bps ); }
+      else { source2.start(startTime + i * bps ); }
+  }
+}
+function stp() {
+  if ( ind == "stp" ) return ;
+  ind = "stp" ;
+  context.close() ;
+}
+function BufferLoader(context, urlList, callback) {
+  this.context = context;
+  this.urlList = urlList;
+  this.onload = callback;
+  this.bufferList = new Array();
+  this.loadCount = 0;
+}
+BufferLoader.prototype.loadBuffer = function(url, index) {
+  // Load buffer asynchronously
+  var request = new XMLHttpRequest();
+  request.open("GET", url, true);
+  request.responseType = "arraybuffer";
+
+  var loader = this;
+
+  request.onload = function() {
+    // Asynchronously decode the audio file data in request.response
+    loader.context.decodeAudioData(
+      request.response,
+      function(buffer) {
+        if (!buffer) {
+          alert('error decoding file data: ' + url);
+          return;
         }
-        // 再生
-        //source.start(0);
-    };
-
-    // main
-    window.onload = function() {  
-        // サウンドを読み込む
-        getAudioBuffer('./Sound/heart.mp3', function(buffer) {
-            // 読み込み完了後にボタンにクリックイベントを登録
-            var btn = document.getElementById('btn');
-            btn.onclick = function() {
-                // サウンドを再生
-                playSound(buffer);
-            };
-        });
-    };
-</script>
+        loader.bufferList[index] = buffer;
+        if (++loader.loadCount == loader.urlList.length)
+          loader.onload(loader.bufferList);
+      },
+      function(error) {
+        console.error('decodeAudioData error', error);
+      }
+    );
+  }
+  request.onerror = function() {
+    alert('BufferLoader: XHR error');
+  }
+  request.send();
+}
+BufferLoader.prototype.load = function() {
+  for (var i = 0; i < this.urlList.length; ++i)
+  this.loadBuffer(this.urlList[i], i);
+}
+function cl(x) {if( form.r1[x].checked) hy = document.form.r1[x].value ; }
+function sc1(x) {if( form.s1[x].checked) sn1 = x ; }
+function sc2(x) {if( form.s2[x].checked) sn2 = x ; }
+// --></script>
+</head>
 <body>
-    <FORM Name="form">
-    <p>脈拍：<input name="tmp" value="120" size="3">／分</p> 
-    <button id='btn'>Play</button>
-    </form>
+<FORM Name="form">
+<table class="tbl" style="text-align:center;margin:0px auto;">
+    <tr>
+      <td style="background-color:#0000ff;color:#ffffff"><p><b>Ｍｅｔｒｏｎｏｍｅ</b></p></td>
+    </tr>
+    <tr>
+      <td style="background-color:#ccccff">
+<p><b>テンポ音、拍子音の選択ができます。</b></p>
+<p>テンポ：<input name="tmp" value="120" size="3">／分（４０～２１０）</p>
+<p>拍子： <input type="radio" value="1" name="r1" onclick="cl(0)">１　 
+<input type="radio" value="2" name="r1" onclick="cl(1)">２　 
+<input type="radio" value="3" name="r1" onclick="cl(2)">３　 
+<input type="radio" value="4" name="r1" onclick="cl(3)" checked>４　
+<input type="radio" value="5" name="r1" onclick="cl(4)">５　 
+<input type="radio" value="6" name="r1" onclick="cl(5)">６　 
+<input type="radio" value="7" name="r1" onclick="cl(6)">７　 
+<input type="radio" value="8" name="r1" onclick="cl(7)">８　</p>
+<p>音名（テンポ音・拍子音）<br>
+      音１（　<input type="radio" name="s1" onclick="sc1(0)" checked>　・　<input type="radio" name="s2" onclick="sc2(0)">　）　<br>
+      音２（　<input type="radio" name="s1" onclick="sc1(1)">　・　<input type="radio" name="s2" onclick="sc2(1)" checked>　）　<br>
+      音３（　<input type="radio" name="s1" onclick="sc1(2)">　・　<input type="radio" name="s2" onclick="sc2(2)">　）　<br>
+      音４（　<input type="radio" name="s1" onclick="sc1(3)">　・　<input type="radio" name="s2" onclick="sc2(3)">　）　<br>
+      音５（　<input type="radio" name="s1" onclick="sc1(4)">　・　<input type="radio" name="s2" onclick="sc2(4)">　）　<br>
+      音６（　<input type="radio" name="s1" onclick="sc1(5)">　・　<input type="radio" name="s2" onclick="sc2(5)">　）　<br>
+      音７（　<input type="radio" name="s1" onclick="sc1(6)">　・　<input type="radio" name="s2" onclick="sc2(6)">　）　<br>
+      音８（　<input type="radio" name="s1" onclick="sc1(7)">　・　<input type="radio" name="s2" onclick="sc2(7)">　）　</p>
+      <p><input type="button" value="スタート" onClick="init()">
+<input type="button" value="ストップ" onClick="stp()"></p>
+      </td>
+    </tr>
+</table>
+</form>
 </body>
 </html>
