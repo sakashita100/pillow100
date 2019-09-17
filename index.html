@@ -8,11 +8,11 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <title>HeartBeat</title>
 <style>
-        .sound {
-          width : 100px;
-          height : 100px;
-          border : solid 1px #000;
-        }
+    .box {
+      width : 100px;
+      height : 100px;
+      border : solid 1px #000;
+    }
 </style>
 <script>
         var soundArray = [];
@@ -73,7 +73,7 @@
           bufferLoader.load();
         
           function finishedLoading(bufferList) {
-            el = document.getElementsByClassName("sound");
+            el = document.getElementsByClassName("box");
             for( var i = 0; i < bufferList.length ; i++ ) {
               var source = context.createBufferSource();
               source.buffer = bufferList[i];
