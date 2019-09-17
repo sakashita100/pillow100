@@ -1,116 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="content-language" content="ja">
-    <meta charset="UTF-8">
-    <title>HeartBeat</title>
-    <meta name="description" content="メトロノーム">
-    <meta name="viewport" content="width=device-width, user-scalable=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-</head>
-
-<body onload="init();">
-
-<form name="form">
-    <table class="tbl" style="text-align:center;margin:0px auto;">
-    <tr><td style="background-color:#ffccf7">
-    <p>心拍数<input type="text" name="tmp" size="5" value="62">/分(BPM)</p>
-    <p><input type="button" value="start" onclick="srt()">
-    <input type="button" value="stop" onclick="stp()"></p>
-    </td></tr></table>
-</form>
-
+<meta http-equiv="content-language" content="ja">
+<meta charset="UTF-8">
+<meta name="description" content="メトロノーム">
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>HeartBeat</title>
+<style>
+        .sound {
+          width : 100px;
+          height : 100px;
+          border : solid 1px #000;
+        }
+</style>
 <script>
-    var context;
-    var bufferLoader;
-
-    function init() {
-        ind = "";
-        window.AudioContext = window.AudioContext || window.webkitAudioContext;
-        context = new AudioContext();
-        bufferLoader = new BufferLoader( context,['./Sound/heart.mp3'] ,finishedLoading );
-        bufferLoader.load();
-    }
-
-    function finishedLoading(bufferList) {
-        snd = Array() ;
-        for (i = 0 ; i < bufferList.length ; i++ ) { snd[i] = bufferList[i] ; }
-        srt() ;
-    }
-
-    function srt() {
-        if ( ind == "srt" ) { return } ;
-        ind = "srt";
-
-        source1 = context.createBufferSource();
-        source1.buffer = snd[0];
-        source1.connect(context.destination);
-        bps = 60 / form.tmp.value;
-        var startTime = context.currentTime ;
-        for ( i = 0 ; i < 10 * 60 / bps ; i++ ) {
-            var source1 = context.createBufferSource();
-            source1.buffer = snd[0] ;
-            source1.connect(context.destination);
-            source1.start(startTime + i * bps );
+        var soundArray = [];
+        function BufferLoader(context, urlList, callback) {
+          this.context = context;
+          this.urlList = urlList;
+          this.onload = callback;
+          this.bufferList = new Array();
+          this.loadCount = 0;
         }
-    }
-
-    function stp() {
-        if ( ind == "stp" ) return ;
-        ind = "stp" ;
-        context.close() ;
-    }
-  
-    function BufferLoader(context, urlList, callback) {
-        this.context = context;
-        this.urlList = urlList;
-        this.onload = callback;
-        this.bufferList = new Array();
-        this.loadCount = 0;
-    }
-
-    BufferLoader.prototype.loadBuffer = function(url, index) {
-        // Load buffer asynchronously
-        var request = new XMLHttpRequest();
-        request.open("GET", url, true);
-        request.responseType = "arraybuffer";
-        var loader = this;
-        request.onload = function() {
-        // Asynchronously decode the audio file data in request.response
-        loader.context.decodeAudioData(
-            request.response,
-            function(buffer) {
-            if (!buffer) {
-                alert('error decoding file data: ' + url);
-                return;
+        
+        BufferLoader.prototype.loadBuffer = function(url, index) {
+          // Load buffer asynchronously
+          var request = new XMLHttpRequest();
+          request.open("GET", url, true);
+          request.responseType = "arraybuffer";
+          var loader = this;
+          request.onload = function() {
+            // Asynchronously decode the audio file data in request.response
+            loader.context.decodeAudioData(
+              request.response,
+              function(buffer) {
+                if (!buffer) {
+                  alert('error decoding file data: ' + url);
+                  return;
+                }
+                loader.bufferList[index] = buffer;
+                if (++loader.loadCount == loader.urlList.length)
+                  loader.onload(loader.bufferList);
+              },
+              function(error) {
+                console.error('decodeAudioData error', error);
+              }
+            );
+          }
+        
+          request.onerror = function() {
+            alert('BufferLoader: XHR error');
+          }
+        
+          request.send();
+        }
+        
+        BufferLoader.prototype.load = function() {
+          for (var i = 0; i < this.urlList.length; ++i)
+          this.loadBuffer(this.urlList[i], i);
+        }
+        
+          window.AudioContext = window.AudioContext||window.webkitAudioContext;
+          context = new AudioContext();
+          bufferLoader = new BufferLoader(
+            context,
+            [ './Sound/heart.mp3',
+            　'./Sound/heart..wav',
+            ],
+            finishedLoading
+          );
+          bufferLoader.load();
+        
+          function finishedLoading(bufferList) {
+            el = document.getElementsByClassName("sound");
+            for( var i = 0; i < bufferList.length ; i++ ) {
+              var source = context.createBufferSource();
+              source.buffer = bufferList[i];
+              source.connect(context.destination);
+              soundArray.push(source);
             }
-            loader.bufferList[index] = buffer;
-            if (++loader.loadCount == loader.urlList.length)
-                loader.onload(loader.bufferList);
-            },
-            function(error) {
-            console.error('decodeAudioData error', error);
+            for( let i = 0; i < el.length ; i++ ) {
+              el[i].addEventListener('click', function() {
+                soundArray[i].start(0);
+                soundArray[i] = context.createBufferSource();
+                soundArray[i].buffer = bufferList[i];
+                soundArray[i].connect(context.destination);
+              });
             }
-        );
-        }
-        request.onerror = function() {
-        alert('BufferLoader: XHR error');
-        }
-        request.send();
-    }
+          }
+        </script>
+</head>
+<body>
 
-    BufferLoader.prototype.load = function() {
-        for (var i = 0; i < this.urlList.length; ++i)
-        this.loadBuffer(this.urlList[i], i);
-    }
-
-
-    function finishedLoading(bufferList) {
-        snd = Array() ;
-        for (i = 0 ; i < bufferList.length ; i++ ) { snd[i] = bufferList[i] ; }
-        srt() ;
-    }
-  
-</script>
 </body>
 </html>
