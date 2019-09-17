@@ -1,109 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-language" content="ja">
-<meta charset="UTF-8">
-<meta name="description" content="メトロノーム">
-<meta name="viewport" content="width=device-width, user-scalable=no" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<title>HeartBeat</title>
-<script>
-var soundArray = [];
-ind = "";
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, user-scale=yes, initial-scale=1.0, maximum-scale=5.0" />
 
-function init(){
-    if(ind == "srt"){
-        return;
+  <script type="text/javascript">
+
+    //iOS版
+    var request;
+    var status = 0;
+
+    function clickPlay() {
+      if (status == 0) {
+        status = 1;
+        request = new XMLHttpRequest();
+        request.open("GET", "heart.mp3", true);
+        request.responseType = "arraybuffer";
+        request.onload = completeOnLoad;
+        request.send();
+      }
+      else if (status == 2) {
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        context = new AudioContext();
+
+        source = context.createBufferSource();
+
+        // オーディオをデコード
+        context.decodeAudioData(request.response, function (buf) {
+          source.buffer = buf;
+          source.loop = false;
+          source.connect(context.destination);
+          source.start(0);
+        });
+      }
+    };
+    
+    /*
+    //下記では動作しないので注意
+      else if (status == 2) {
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        context = new AudioContext();
+
+        source = context.createBufferSource();
+
+        // オーディオをデコード
+        context.decodeAudioData(request.response, function (buf) {
+          source.buffer = buf;
+          source.loop = false;
+        });
+
+        source.connect(context.destination);
+        source.start(0);
+      }
+    */
+
+    function completeOnLoad() {
+      status = 2;
+      var elem = document.getElementById("Play");
+      elem.innerText = "再生";
     }
-    ind = "srt";
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    context = new AudioContext();
-    bufferLoader = new BufferLoader( context,'heart.mp3',finishedLoading );
-    bufferLoader.load();
-}
+  </script>
 
-function BufferLoader(context, urlList, callback) {
-    this.context = context;
-    this.urlList = urlList;
-    this.onload = callback;
-    this.bufferList = new Array();
-    this.loadCount = 0;
-}
-
-BufferLoader.prototype.loadBuffer = function(url, index) {
-    // Load buffer asynchronously
-    var request = new XMLHttpRequest();
-    request.open("GET", url, true);
-    request.responseType = "arraybuffer";
-    var loader = this;
-    request.onload = function() {
-        // Asynchronously decode the audio file data in request.response
-        loader.context.decodeAudioData(
-            request.response,
-            function(buffer) {
-                if (!buffer) {
-                    alert('error decoding file data: ' + url);
-                    return;
-                }
-                loader.bufferList[index] = buffer;
-                if (++loader.loadCount == loader.urlList.length)
-                    loader.onload(loader.bufferList);
-            },
-            function(error) {
-                console.error('decodeAudioData error', error);
-            }
-        );
-    }
-    request.onerror = function() {
-        alert('BufferLoader: XHR error');
-    }
-    request.send();
-}
-
-BufferLoader.prototype.load = function() {
-    for (var i = 0; i < this.urlList.length; ++i)
-    this.loadBuffer(this.urlList[i], i);
-}
-
-function finishedLoading(bufferList) {
-    for (i = 0 ; i < bufferList.length ; i++ ) {
-        var src = context.createBufferSource();
-        src.buffer = bufferList[i];
-        src.connect(context.destination);
-        soundArray.push(src);
-    }
-    srt();
-}
-
-function srt(){
-    bps = 60 / form.tmp.value;
-    var startTime = context.currentTime;
-    for(i = 0; i < 10 * 60 / bps; i++){
-        soundArray[i].start(startTime + i * bps);
-        soundArray[i] = context.createBufferSource();
-        soundArray[i].buffer = bufferList[i];
-        soundArray[i].connect(context.destination);
-    }
-}
-
-function stp(){
-    if(ind = "stp"){
-        return;
-    }
-    ind = "stp";
-    context.close();
-}
-       
-</script>
 </head>
 <body>
-<form name="form">
-<table class="tbl" style="text-align:center;margin:0px auto;">
-<tr><td style="background-color:#ffccf7">
-<p>心拍数<input type="text" name="tmp" size="5" value="62">/分(BPM)</p>
-<p><input type="button" value="start" onclick="init()">
-<input type="button" value="stop" onclick="stp()"></p>
-</td></tr></table>
-</form>
+  <a id="Play" href="javascript:void(0);" onclick="clickPlay();">読み込み</a><br />
+  <a id="Pasue" href="javascript:void(0);">停止</a><br />
+
 </body>
 </html>
