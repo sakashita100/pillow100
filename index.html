@@ -40,14 +40,24 @@
       req.send('');
     };
 
+    //無音を再生
+    var playSilent = function(){
+      var context = this.context;
+      var buf = context.createBuffer(1, 1, 22050);
+      var src = context.createBufferSource();
+      src.buffer = buf;
+      src.connect(context.destination);
+      src.start(0);
+    }
+
     // サウンドを再生
     var playSound = function(buffer) {  
       // source を作成
-      var source = context.createBufferSource();
+      //var source = context.createBufferSource();
       // buffer をセット
-      source.buffer = buffer;
+      //source.buffer = buffer;
       // context に connect
-      source.connect(context.destination);
+      //source.connect(context.destination);
 
       bps = 60 / 75;
       var startTime = context.currentTime;
@@ -70,6 +80,8 @@
         // 読み込み完了後にボタンにクリックイベントを登録
         var btn = document.getElementById('btn');
         btn.onclick = function() {
+          //無音を再生
+          playSilent();
           // サウンドを再生
           playSound(buffer);
         };
