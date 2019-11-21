@@ -17,6 +17,9 @@
     </form> 
 
     <script type="text/javascript">
+      var context;
+      var bufferLoader;
+      
       function init(){
         window.AudioContext = window.AudioContext || window.webkitAudioContext;  
         context = new AudioContext();
