@@ -38,7 +38,7 @@ window.onload = function() {
 var start = function() {
     // We'll start playing the rhythm 100 milliseconds from "now"
     var startTime = context.currentTime + 0.100;
-    var tempo = 80; // BPM (beats per minute)
+    var tempo = document.getElementById("bpm").value; // BPM (beats per minute)
     var eighthNoteTime = (60 / tempo) / 2;
 
     for (var bar = 0; bar < 2; bar++) {
