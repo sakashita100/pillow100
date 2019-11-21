@@ -16,7 +16,9 @@
       var soundBuffer = null;
 
       start = document.getElementById('start');
-      start.addEventListener('click',clickHandler);
+      start.addEventListener('click',function(){
+        playSound(soundBuffer);
+      });
 
       var request = new XMLHttpRequest();
       request.open('GET', './sound/heart.mp3', true);
@@ -35,10 +37,6 @@
         source.buffer = buffer;
         source.connect(context.destination);
         source.start(0);
-      }
-
-      function clickHandler(e) {
-          playSound(soundBuffer);
       }
    
     </script>  
