@@ -7,19 +7,20 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>HeartBeat_women</title> 
   </head>
-  <body onload="init()">
+  <body>
     <form name="data">
         <p><input type="text" name="bpm" size="5" value="75">bpm</p>
         <p>
-          <input type="button" value="start" onclick="finishedLoading(bufferList)">
+          <input type="button" value="start" onclick="start()">
           <input type="button" value="stop" onclick="stop()">
         </p>
     </form> 
 
     <script type="text/javascript">
+      window.onload = init;
       var context;
       var bufferLoader;
-      
+
       function init(){
         window.AudioContext = window.AudioContext || window.webkitAudioContext;  
         context = new AudioContext();
