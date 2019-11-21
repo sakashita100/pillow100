@@ -26,7 +26,7 @@ RhythmSample.play = function() {
             source.start(time);
         }
 
-        var beat = BUFFERS.beat;
+        var beat = buffer;
 
         // We'll start playing the rhythm 100 milliseconds from "now"
         var startTime = context.currentTime + 0.100;
