@@ -5,168 +5,41 @@
     <meta name="viewport" content="width=device-width, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>HeartBeat_women</title>
+    <title>HeartBeat_women</title> 
   </head>
-  <body onload="init();">
-    <form name="form">
-        <p>bpm<input type="text" name="bpm" size="5" value="75"></p>
+  <body onload="init()">
+    <form name="data">
+        <p><input type="text" name="bpm" size="5" value="75">bpm</p>
         <p>
-          <input type="button" value="start" onclick="srt()">
-          <input type="button" value="stop" onclick="stp()">
+          <input type="button" value="start" onclick="finishedLoading(bufferList)">
+          <input type="button" value="stop" onclick="stop()">
         </p>
-
-    </form>
+    </form> 
 
     <script type="text/javascript">
-    function ini() {
-      ind = "stp" ;
-    }
-    function stp() {
-      ind = "stp" 
-    }
-    function srt() {
-      window.AudioContext = window.AudioContext || window.webkitAudioContext;
-      context = new AudioContext();
+      function init(){
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;  
+        context = new AudioContext();
 
-      // Audio 用の buffer を読み込む
-      var getAudioBuffer = function(url, fn) {  
-        var req = new XMLHttpRequest();
-        // array buffer を指定
-        req.responseType = 'arraybuffer';
+        bufferLoader = new BufferLoader(
+          context,
+          [
+            './sound/heart.mp3',
+          ],
+          finishedLoading
+          );
 
-        req.onreadystatechange = function() {
-          if (req.readyState === 4) {
-            if (req.status === 0 || req.status === 200) {
-              // array buffer を audio buffer に変換
-              context.decodeAudioData(req.response, function(buffer) {
-                // コールバックを実行
-                fn(buffer);
-              });
-            }
-          }
-        };
-        req.open('GET', url, true);
-        req.send('');
-      };
-
-
-      if ( ind == "srt" ) { 
-        return 
+        bufferLoader.load();
       }
-      ind = "srt";
-      cnt = 0 ;
-      bpm = form.bpm.value ;
-      function _noteon( ) {
-        if (ind == "stp") { 
-          return 
-        }
-        noteon(context, _noteon);
-        cnt++;
+
+      function finishedLoading(bufferList){
+        var src = context.createBufferSource();
+        src.buffer = bufferList[0];
+
+        src.connect(context.destination);
+        src.start(0);
       }
-      _noteon( );
-    }
-    function noteon ( context, callBack ) {
-      bps = 60 / bpm ;
-      var sampleRate = context.sampleRate;    // サンプリングレート
-      var dt = 1 / sampleRate;                // オーディオデータの時間刻みを計算
-      var buf = context.createBuffer(1, sampleRate * bps, sampleRate);    // オーディオバッファ生成
-      var data = buf.getChannelData(0);       // バッファ用配列を取得
-
-      getAudioBuffer("./sound/heart.mp3", function(buffer){
-        playSound(buffer);
-      });
-      
-
-      var playSound = function(buffer) {  
-        // source を作成
-        var source = context.createBufferSource();
-        // buffer をセット
-        source.buffer = buffer;
-        // context に connect
-        source.connect(context.destination);
-        // 再生
-        source.start(0, 0, bps);
-      };
-      
-    }
-
-    /*
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;  
-    var context = new AudioContext();
-
-    // Audio 用の buffer を読み込む
-    var getAudioBuffer = function(url, fn) {  
-      var req = new XMLHttpRequest();
-      // array buffer を指定
-      req.responseType = 'arraybuffer';
-
-      req.onreadystatechange = function() {
-        if (req.readyState === 4) {
-          if (req.status === 0 || req.status === 200) {
-            // array buffer を audio buffer に変換
-            context.decodeAudioData(req.response, function(buffer) {
-              // コールバックを実行
-              fn(buffer);
-            });
-          }
-        }
-      };
-
-      req.open('GET', url, true);
-      req.send('');
-    };*/
-
-    //無音を再生
-    /*
-    var playSilent = function(){
-      var context = this.context;
-      var buf = context.createBuffer(1, 1, 22050);
-      var src = context.createBufferSource();
-      src.buffer = buf;
-      src.connect(context.destination);
-      src.start(0);
-    }*/
-
-    // サウンドを再生
-    /*
-    var playSound = function(buffer) {  
-      // source を作成
-      var source = context.createBufferSource();
-      // buffer をセット
-      source.buffer = buffer;
-      // context に connect
-      source.connect(context.destination);
-
-      /*
-      bps = 60 / 75;
-      var startTime = context.currentTime;
-      for(i = 0; i < 10 * 60 / bps; i++;){
-        var source = context.createBufferSource();
-        source.buffer = buffer;
-        source.connect(context.destination);
-
-        source.start(startTime + i * bps);
-      }*/
-/*
-      // 再生
-      source.start(0);
-    };*/
-
-    // main
-    /*
-    window.onload = function() {  
-      // サウンドを読み込む
-      getAudioBuffer("./sound/heart.mp3", function(buffer) {
-        // 読み込み完了後にボタンにクリックイベントを登録
-        var btn = document.getElementById('btn');
-        btn.onclick = function() {
-          //無音を再生
-          playSilent();
-          // サウンドを再生
-          playSound(buffer);
-        };
-      });
-    };*/
-    </script>    
+   
+    </script>  
   </body>  
 </html>  
