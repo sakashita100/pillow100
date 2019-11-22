@@ -37,11 +37,9 @@ window.onload = function() {
 
 var start = function() {
     // We'll start playing the rhythm 100 milliseconds from "now"
-    //var startTime = context.currentTime + 0.100;
-    var startTime = context.currentTime;
+    var startTime = context.currentTime + 0.100;
     var bpm = document.getElementById("bpm").value; // BPM (beats per minute)
-    //var eighthNoteTime = (60 / bpm) / 2;
-    var bps = 60 / bpm;
+    var eighthNoteTime = (60 / bpm) / 2;
 
     /*
     for (var bar = 0; bar < 2; bar++) {
@@ -52,9 +50,11 @@ var start = function() {
         playSound(beat, time + 6 * eighthNoteTime);
     }
     */
-   for (i = 0; i < 10 * 60 / bps; i++) {
-       playSound(beat, time + i * bps);
-   }
+
+    var time = startTime;
+    while(1) {
+        playSound(beat, time);
+    }
 }
 
 var stop = function() {
