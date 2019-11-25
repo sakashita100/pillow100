@@ -41,19 +41,12 @@ var start = function() {
     var bpm = document.getElementById("bpm").value; // BPM (beats per minute)
     var eighthNoteTime = (60 / bpm) / 2;
 
-    /*
     for (var bar = 0; bar < 2; bar++) {
         var time = startTime + bar * 8 * eighthNoteTime;
         playSound(beat, time);
         playSound(beat, time + 2 * eighthNoteTime);
         playSound(beat, time + 4 * eighthNoteTime);
         playSound(beat, time + 6 * eighthNoteTime);
-    }
-    */
-
-    var time = startTime;
-    while(1) {
-        playSound(beat, time);
     }
 }
 
