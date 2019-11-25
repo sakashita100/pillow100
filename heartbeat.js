@@ -36,7 +36,6 @@ window.onload = function() {
 };
 
 var start = function() {
-  /*
   const bpms = [
     164,164,164,164,161,160,160,160,159,159,158,158,156,156,156,157,157,157,157,157,
     157,157,157,157,157,157,158,158,157,156,156,156,157,157,158,158,158,158,165,167,
@@ -51,7 +50,7 @@ var start = function() {
     188,188,188,188,188,188,188,188,188,188,188,190,190,190,190,190,189,189,189,189,
     189,189,189,188,185,185,185,185,185,185,185,185,185,185,185,185,185,185,185,185,
     186,186,186,186,186,186,185,185,185,185,185,185,185,185,185,185
-  ];*/
+  ];
 
   var startTime = context.currentTime + 0.100;
   var bpm = document.getElementById("bpm").value; // BPM (beats per minute)
@@ -75,7 +74,7 @@ var start = function() {
   for (var cnt = 0; cnt < 2; cnt++) {
     var time = startTime + cnt * 4 * bps;
     
-    for (var i = 0; i < 4; ++i) {
+    for (var i = 0; i < 8; ++i) {
       playSound(beat, time + i * bps);
     }
 
