@@ -53,8 +53,8 @@ var start = function() {
   ];
 
   var startTime = context.currentTime + 0.100;
-  var bpm = document.getElementById("bpm").value; // BPM (beats per minute)
-  //var bpm = bpms[0];
+  //var bpm = document.getElementById("bpm").value; // BPM (beats per minute)
+  var bpm = bpms[0];
   //var eighthNoteTime = (60 / bpm) / 2;
   var bps = 60 / bpm;
 
@@ -71,10 +71,12 @@ var start = function() {
   }*/
 
 
-  for (var cnt = 0; cnt < 2; cnt++) {
+  for (var cnt = 0; cnt < 10; cnt++) {
     var time = startTime + cnt * 4 * bps;
+    bpm = bpms[cnt];
+    document.getElementById("bpm").innerHTML = bpm;
     
-    for (var i = 0; i < 8; ++i) {
+    for (var i = 0; i < 4; ++i) {
       playSound(beat, time + i * bps);
     }
 
