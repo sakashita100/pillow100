@@ -71,8 +71,14 @@ var start = function() {
     playSound(beat, time + 6 * eighthNoteTime);
   }*/
 
-  for (var i = 0; i < 8; ++i) {
-    playSound(beat, time + i * bps);
+
+  for (var cnt = 0; cnt < 2; cnt++) {
+    var time = startTime + cnt * 4 * bps;
+    
+    for (var i = 0; i < 4; ++i) {
+      playSound(beat, time + i * bps);
+    }
+
   }
 
 }
