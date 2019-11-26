@@ -56,7 +56,7 @@ var start = function() {
   //var bpm = document.getElementById("bpm").value; // BPM (beats per minute)
   var bpm = bpms[0];
   //var eighthNoteTime = (60 / bpm) / 2;
-  var bps = 60 / bpm;
+  //var bps = 60 / bpm;
 
   /*
   for (var cnt = 0; cnt < 2; cnt++) {
@@ -72,8 +72,9 @@ var start = function() {
 
 
   for (var cnt = 0; cnt < 10; cnt++) {
-    var time = startTime + cnt * 4 * bps;
     bpm = bpms[cnt];
+    var bps = 60 / bpm;
+    var time = startTime + cnt * 4 * bps;
     document.getElementById("bpm").innerHTML = bpm;
     
     for (var i = 0; i < 4; ++i) {
