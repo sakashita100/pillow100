@@ -184,8 +184,7 @@ function init(){
   canvas.height = window.innerHeight; 
   document.body.appendChild( container );
   container.appendChild(canvas);    
-  canvasContext.strokeStyle = "#ffffff";
-  canvasContext.lineWidth = 2;
+
 
 
   context = new AudioContext();
