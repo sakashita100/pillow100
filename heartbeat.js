@@ -20,18 +20,6 @@ var notesInQueue = [];      // the notes that have been put into the web audio,
 var timerWorker = null;     // The Web Worker used to fire timer messages
 
 
-// First, let's shim the requestAnimationFrame API, with a setTimeout fallback
-window.requestAnimFrame = (function(){
-  return  window.requestAnimationFrame ||
-  window.webkitRequestAnimationFrame ||
-  window.mozRequestAnimationFrame ||
-  window.oRequestAnimationFrame ||
-  window.msRequestAnimationFrame ||
-  function( callback ){
-      window.setTimeout(callback, 1000 / 60);
-  };
-})();
-
 
 function nextNote() {
   //現在の音符と時間を16分音符分進める
@@ -130,31 +118,6 @@ function resetCanvas (e) {
 
 
 
-function draw() {
-  var currentNote = last16thNoteDrawn;
-  var currentTime = context.currentTime;
-
-  while (notesInQueue.length && notesInQueue[0].time < currentTime) {
-      currentNote = notesInQueue[0].note;
-      notesInQueue.splice(0,1);   // remove note from queue
-  }
-
-  // We only need to draw if the note has moved.
-  if (last16thNoteDrawn != currentNote) {
-      var x = Math.floor( canvas.width / 18 );
-      canvasContext.clearRect(0,0,canvas.width, canvas.height); 
-      for (var i=0; i<16; i++) {
-          canvasContext.fillStyle = ( currentNote == i ) ? 
-              ((currentNote%4 === 0)?"red":"blue") : "black";
-          canvasContext.fillRect( x * (i+1), x, x/2, x/2 );
-      }
-      last16thNoteDrawn = currentNote;
-  }
-
-  // set up to draw again
-  requestAnimFrame(draw);
-}
-
 var getAudioBuffer = function(url, fn) {  
   var request = new XMLHttpRequest();
   request.responseType = 'arraybuffer';
@@ -176,15 +139,6 @@ var getAudioBuffer = function(url, fn) {
 
 
 function init(){
-  var container = document.createElement( 'div' );
-  container.className = "container";
-  canvas = document.createElement( 'canvas' );
-  anvasContext = canvas.getContext( '2d' );
-  canvas.width = window.innerWidth; 
-  canvas.height = window.innerHeight; 
-  document.body.appendChild( container );
-  container.appendChild(canvas);    
-
 
 
   context = new AudioContext();
@@ -192,8 +146,6 @@ function init(){
   // if we wanted to load audio files, etc., this is where we should do it.
 
 
-
-  requestAnimFrame(draw);    // start the drawing loop.
 
   timerWorker = new Worker("worker.js");
 
