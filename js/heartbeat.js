@@ -28,13 +28,13 @@ function stopTimer() {
 }
 
 var update = function() {
+  count++;
   if(count < bpms.length) {
-    count++;
     console.log("countup");
-    if(count >= bpm.length) {
-      count = 0;
-      console.log("countdown");
-    }
+  }
+  else if(count >= bpm.length) {
+    count = 0;
+    console.log("countdown");
   }
 
   bpm = bpms[count];
