@@ -35,7 +35,6 @@ function scheduleNote( beatNumber, time ) {
   source.buffer = beat;
   source.connect(context.destination);
   source.start(time);
-  source.stop(time + noteLength);
 }
 
 function scheduler() {
@@ -62,13 +61,14 @@ function play() {
   isPlaying = !isPlaying;
 
   if (isPlaying) { // start playing
-      currentNote = 0;
-      nextNoteTime = context.currentTime;
-      timerWorker.postMessage("start");
-      return "stop";
-  } else {
-      timerWorker.postMessage("stop");
-      return "play";
+    currentNote = 0;
+    nextNoteTime = context.currentTime;
+    timerWorker.postMessage("start");
+    return "stop";
+  } 
+  else {
+    timerWorker.postMessage("stop");
+    return "play";
   }
 }
 
@@ -101,12 +101,12 @@ function init(){
   timerWorker = new Worker("./js/worker.js");
 
   timerWorker.onmessage = function(e) {
-  if (e.data == "tick") {
-  // console.log("tick!");
-  scheduler();
-  }
-  else
-  console.log("message: " + e.data);
+    if (e.data == "tick") {
+      // console.log("tick!");
+      scheduler();
+    }
+    else
+      console.log("message: " + e.data);
   };
   timerWorker.postMessage({"interval":lookahead});
 }
