@@ -9,7 +9,7 @@ var lookahead = 25.0; //スケジューリング関数を呼び出す間隔(ミ�
 var scheduleAheadTime = 0.1;  //音をスケジュールする先読み時間の長さ(秒)
                               //先読みから計算され、タイマーが遅れた場合は次の間隔と重複する
 var nextNoteTime = 0.0; //次のメモの期限が来たとき
-//var noteResolution = 2; //0 == 16分、1 == 8分、2 ==四分音符
+var noteResolution = 2; //0 == 16分、1 == 8分、2 ==四分音符
 var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍音を入れる箱
 
