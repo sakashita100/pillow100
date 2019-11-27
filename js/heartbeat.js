@@ -16,8 +16,15 @@ const bpms = [
 var bpm = bpms[0];
 var count = 0;
 
-function timeUpdate() {
-  var timer = setInterval(update, 3000);
+function timeUpdate(change) {
+  var timer = null;
+  if(change == 1){
+    timer = setInterval(update, 3000);
+  }
+  else{
+    clearInterval(timer);
+    change = 0;
+  }
 }
 
 var update = function() {
@@ -72,7 +79,7 @@ function play() {
   if (isPlaying) { // start playing
     currentNote = 0;
     document.getElementById("bpm").innerHTML = bpm;
-    timeUpdate();
+    timeUpdate(1);
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
     return "stop";
