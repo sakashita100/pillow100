@@ -15,16 +15,14 @@ const bpms = [
 ];
 var bpm = bpms[0];
 var count = 0;
+var timer = null;
 
-function timeUpdate(change) {
-  var timer = null;
-  if(change == 1){
-    timer = setInterval(update, 3000);
-  }
-  else{
-    clearInterval(timer);
-    change = 0;
-  }
+function startTimer() {
+  timer = setInterval(update, 3000);
+}
+
+function stopTimer() {
+  clearInterval(timer);
 }
 
 var update = function() {
@@ -79,13 +77,13 @@ function play() {
   if (isPlaying) { // start playing
     currentNote = 0;
     document.getElementById("bpm").innerHTML = bpm;
-    timeUpdate(1);
+    startTimer();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
     return "stop";
   } 
   else {
-    timeUpdate(2);
+    stopTimer();
     timerWorker.postMessage("stop");
     return "play";
   }
