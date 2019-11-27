@@ -31,11 +31,12 @@ var update = function() {
   if(count < bpms.length) {
     ++count;
     console.log("countup");
+    if(count >= bpm.length) {
+      count = 0;
+      console.log("countdown");
+    }
   }
-  else{
-    count = 0;
-    console.log("countdown");
-  }
+
   bpm = bpms[count];
   document.getElementById("bpm").innerHTML = bpm;
 };
