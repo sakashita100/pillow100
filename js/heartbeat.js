@@ -14,7 +14,6 @@ const bpms = [
   61, 52, 63, 72, 65, 66, 67, 68, 88
 ];
 var bpm = bpms[0];
-var cnt = 0;
 
 
 function nextNote() {
@@ -65,11 +64,9 @@ function play() {
   if (isPlaying) { // start playing
       currentNote = 0;
       nextNoteTime = context.currentTime;
-      var timer = setInterval(timeUpdate, 10000);
       timerWorker.postMessage("start");
       return "stop";
   } else {
-      clearInterval(timer);
       timerWorker.postMessage("stop");
       return "play";
   }
@@ -92,13 +89,6 @@ var getAudioBuffer = function(url, fn) {
   request.open('GET', url, true);
   request.send('');
 };
-
-var timeUpdate = function() {
-  console.log("nextBPM");
-  cnt++;
-  bpm = bpms[cnt];
-  document.getElementById("bpm").innerHTML = bpm;
-}
 
 function init(){
   context = new AudioContext();
