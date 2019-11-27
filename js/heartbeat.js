@@ -14,7 +14,16 @@ const bpms = [
   61, 52, 63, 72, 65, 66, 67, 68, 88
 ];
 var bpm = bpms[0];
+var count = 0;
 
+function timeUpdate() {
+  var timer = setInterval(update, 3000);
+}
+
+var update = function() {
+  count++;
+  console.log("countup");
+};
 
 function nextNote() {
   //現在の音符と時間を次の4分音符に進める
@@ -27,7 +36,7 @@ function nextNote() {
   }
 }
 
-function scheduleNote( beatNumber, time ) {
+function scheduleNote( time ) {
   //次に鳴らすべきWebAudioの音をスケジューリングする
 
   //AudioBufferSourceノードを作成して任意の音をここで設定できる
@@ -43,7 +52,7 @@ function scheduler() {
   //存在したらWebAudioAPIを使って次の間隔の前に再生するノートをスケジュールし、ポインターを進める
   //この関数はlookaheadで設定したミリ秒ごとに呼ばれる
   while (nextNoteTime < context.currentTime + scheduleAheadTime ) {
-      scheduleNote( currentNote, nextNoteTime );
+      scheduleNote( nextNoteTime );
       nextNote();
   }
 }
@@ -62,6 +71,8 @@ function play() {
 
   if (isPlaying) { // start playing
     currentNote = 0;
+    document.getElementById("bpm").innerHTML = bpm;
+    timeUpdate();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
     return "stop";
