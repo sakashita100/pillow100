@@ -4,7 +4,7 @@ var unlocked = false;
 var isPlaying = false;  //現在再生中かどうか
 var startTime;
 var current16thNote;  //現在の最後に予定されているメモは何か
-var bpm = 120.0;
+var bpm = 60;
 var lookahead = 25.0; //スケジューリング関数を呼び出す間隔(ミリ秒)
 var scheduleAheadTime = 0.1;  //音をスケジュールする先読み時間の長さ(秒)
                               //先読みから計算され、タイマーが遅れた場合は次の間隔と重複する
