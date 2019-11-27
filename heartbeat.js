@@ -5,24 +5,18 @@ var isPlaying = false;  //現在再生中かどうか
 var startTime;
 var current16thNote;  //現在の最後に予定されているメモは何か
 var bpm = 75;
-var lookahead = 25.0; //スケジューリング関数を呼び出す頻度(ミリ秒)
-var scheduleAheadTime = 0.1;  //音をスケジュールする予定時刻(秒)
+var lookahead = 25.0; //スケジューリング関数を呼び出す間隔(ミリ秒)
+var scheduleAheadTime = 0.1;  //音をスケジュールする先読み時間の長さ(秒)
                               //先読みから計算され、タイマーが遅れた場合は次の間隔と重複する
 var nextNoteTime = 0.0; //次のメモの期限が来たとき
 var noteResolution = 0; //0 == 16分、1 == 8分、2 ==四分音符
 var noteLength = 0.05;  //ビープ音の長さ(秒単位)
-
-var canvas,                 // the canvas element
-    canvasContext;          // canvasContext is the canvas' context 2D
-var last16thNoteDrawn = -1; // the last "box" we drew on the screen
-var notesInQueue = [];      // the notes that have been put into the web audio,
-                            // and may or may not have played yet. {note, time}
-var timerWorker = null;     // The Web Worker used to fire timer messages
-
+var beat = null;
 
 
 function nextNote() {
-  //現在の音符と時間を16分音符分進める
+  //現在の音符と時間を次の16分音符に進める
+  //nextNoteTime変数とcurrent16thNote変数の更新
   var bps = 60 / bpm;
   nextNoteTime += 0.25 * bps;  //最後のビート時間に16分音符の長さのビートを追加する　16分音符 = 0.25 8分音符 = 0.5 4分音符 = bps
   current16thNote++;  //ビート番号を進めてゼロに折り返す
@@ -32,52 +26,25 @@ function nextNote() {
 }
 
 function scheduleNote( beatNumber, time ) {
-  //再生していない場合でも、キューにノートをプッシュする
-  notesInQueue.push( { note: beatNumber, time: time } );
+  //次に鳴らすべきWebAudioの音をスケジューリングする
 
   if ( (noteResolution==1) && (beatNumber%2))
       return; //16分音符以外の8分音符は演奏しない
   if ( (noteResolution==2) && (beatNumber%4))
       return; //4分音符以外の8分音符を演奏しない
-
-  // create an oscillator
-  /*
-  var osc = context.createOscillator();
-  osc.connect( context.destination );
-  if (beatNumber % 16 === 0)    // beat 0 == high pitch
-      osc.frequency.value = 880.0;
-  else if (beatNumber % 4 === 0 )    // quarter notes = medium pitch
-      osc.frequency.value = 440.0;
-  else                        // other 16th notes = low pitch
-      osc.frequency.value = 220.0;
-
-  osc.start( time );
-  osc.stop( time + noteLength );*/
-
-  context = new AudioContext();
-  var buffer = null;
-  var source = context.createBufferSource();
-
-  var request = new XMLHttpRequest();
-  request.open('GET', './sound/heart.mp3', true);
-  request.responseType = 'arraybuffer';
-  request.send();
-
-  request.onload = function () {
-    var res = request.response;
-    context.decodeAudioData(res, function (buf) {
-      source.buffer = buf;
-    });
-  };
-
+  
+  //AudioBufferSourceノードを作成して任意の音をここで設定できる
+  var source = new AudioBufferSourceNode(context, {buffer:beat});
   source.connect(context.destination);
   source.start(time);
   source.stop(time + noteLength);
-
 }
 
 function scheduler() {
-  //次の間隔の前に再生するノートをスケジュールし、ポインターを進める
+  //オーディオクロックの時間を取得し、次に鳴らすべき音の発音時刻と比較する
+  //ほとんどはスケジュールされる音が存在せずに無処理で抜ける
+  //存在したらWebAudioAPIを使って次の間隔の前に再生するノートをスケジュールし、ポインターを進める
+  //この関数はlookaheadで設定したミリ秒ごとに呼ばれる
   while (nextNoteTime < context.currentTime + scheduleAheadTime ) {
       scheduleNote( current16thNote, nextNoteTime );
       nextNote();
@@ -86,10 +53,10 @@ function scheduler() {
 
 function play() {
   if (!unlocked) {
-    // play silent buffer to unlock the audio
-    var buffer = context.createBuffer(1, 1, 22050);
+    //サイレントバッファを再生してオーディオのロックを解除します
+    var silentBuffer = context.createBuffer(1, 1, 22050);
     var node = context.createBufferSource();
-    node.buffer = buffer;
+    node.buffer = silentBuffer;
     node.start(0);
     unlocked = true;
   }
@@ -106,17 +73,6 @@ function play() {
       return "play";
   }
 }
-
-function resetCanvas (e) {
-  // resize the canvas - but remember - this clears the canvas too.
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  //make sure we scroll to the top left.
-  window.scrollTo(0,0); 
-}
-
-
 
 var getAudioBuffer = function(url, fn) {  
   var request = new XMLHttpRequest();
@@ -136,16 +92,15 @@ var getAudioBuffer = function(url, fn) {
   request.send('');
 };
 
-
-
 function init(){
 
 
   context = new AudioContext();
 
-  // if we wanted to load audio files, etc., this is where we should do it.
-
-
+  //オーディオファイルなどをロードする場合は、ここで行う
+  getAudioBuffer('./sound/heart.mp3', function(buffer) {
+    beat = buffer;
+  });
 
   timerWorker = new Worker("worker.js");
 
