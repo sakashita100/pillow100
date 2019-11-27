@@ -27,7 +27,14 @@ function stopTimer() {
 
 var update = function() {
   count++;
-  console.log("countup");
+  if(count < bpms.length) {
+    count++;
+    console.log("countup");
+  }
+  else if(count == bpms.length) {
+    count = 0;
+    console.log("countdown");
+  }
   bpm = bpms[count];
   document.getElementById("bpm").innerHTML = bpm;
 };
