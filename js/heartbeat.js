@@ -4,14 +4,17 @@ var unlocked = false;
 var isPlaying = false;  //現在再生中かどうか
 var startTime;
 var currentNote;  //現在の最後に予定されているメモは何か
-var bpm = 60;
 var lookahead = 25.0; //スケジューリング関数を呼び出す間隔(ミリ秒)
 var scheduleAheadTime = 0.1;  //音をスケジュールする先読み時間の長さ(秒)
                               //先読みから計算され、タイマーが遅れた場合は次の間隔と重複する
 var nextNoteTime = 0.0; //次のメモの期限が来たとき
-var noteResolution = 2; //0 == 16分、1 == 8分、2 ==四分音符
 var noteLength = 0.05;  //ビープ音の長さ(秒単位)
-var beat = null; //心拍音を入れる箱
+var beat = null; //心拍の音を入れる箱
+const bpms = [
+  61, 52, 63, 72, 65, 66, 67, 68, 88
+];
+var bpm = bpms[0];
+var cnt = 0;
 
 
 function nextNote() {
@@ -33,6 +36,7 @@ function scheduleNote( beatNumber, time ) {
   source.buffer = beat;
   source.connect(context.destination);
   source.start(time);
+  source.stop(time + noteLength);
 }
 
 function scheduler() {
@@ -61,9 +65,11 @@ function play() {
   if (isPlaying) { // start playing
       currentNote = 0;
       nextNoteTime = context.currentTime;
+      var timer = setInterval(timeUpdate, 10000);
       timerWorker.postMessage("start");
       return "stop";
   } else {
+      clearInterval(timer);
       timerWorker.postMessage("stop");
       return "play";
   }
@@ -86,6 +92,13 @@ var getAudioBuffer = function(url, fn) {
   request.open('GET', url, true);
   request.send('');
 };
+
+var timeUpdate = function() {
+  console.log("nextBPM");
+  cnt++;
+  bpm = bpms[cnt];
+  document.getElementById("bpm").innerHTML = bpm;
+}
 
 function init(){
   context = new AudioContext();
