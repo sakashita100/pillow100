@@ -85,6 +85,7 @@ function play() {
     return "stop";
   } 
   else {
+    timeUpdate(0);
     timerWorker.postMessage("stop");
     return "play";
   }
