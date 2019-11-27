@@ -11,7 +11,7 @@ var nextNoteTime = 0.0; //次のメモの期限が来たとき
 var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍の音を入れる箱
 const bpms = [
-  61, 52, 63, 72, 65, 66, 67, 68, 88
+  61, 52, 63, 72
 ];
 var bpm = bpms[0];
 var count = 0;
@@ -23,14 +23,15 @@ function startTimer() {
 
 function stopTimer() {
   clearInterval(timer);
+  count = 0;
 }
 
 var update = function() {
   if(count < bpms.length) {
-    count++;
+    ++count;
     console.log("countup");
   }
-  else if(count == bpms.length) {
+  else if(count >= bpms.length) {
     count = 0;
     console.log("countdown");
   }
