@@ -28,6 +28,8 @@ function stopTimer() {
 var update = function() {
   count++;
   console.log("countup");
+  bpm = bpms[count];
+  document.getElementById("bpm").innerHTML = bpm;
 };
 
 function nextNote() {
