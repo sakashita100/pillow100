@@ -34,10 +34,10 @@ function scheduleNote( beatNumber, time ) {
       return; //4分音符以外の8分音符を演奏しない
   
   //AudioBufferSourceノードを作成して任意の音をここで設定できる
-  var source = new AudioBufferSourceNode(context, {buffer:beat});
+  var source = context.createBufferSource();
+  source.buffer = beat;
   source.connect(context.destination);
   source.start(time);
-  source.stop(time + noteLength);
 }
 
 function scheduler() {
@@ -93,8 +93,6 @@ var getAudioBuffer = function(url, fn) {
 };
 
 function init(){
-
-
   context = new AudioContext();
 
   //オーディオファイルなどをロードする場合は、ここで行う
