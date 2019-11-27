@@ -24,6 +24,7 @@ function startTimer() {
 function stopTimer() {
   clearInterval(timer);
   count = 0;
+  bpm = bpms[count];
 }
 
 var update = function() {
@@ -31,7 +32,7 @@ var update = function() {
     ++count;
     console.log("countup");
   }
-  else if(count >= bpms.length) {
+  else{
     count = 0;
     console.log("countdown");
   }
@@ -93,6 +94,7 @@ function play() {
   } 
   else {
     stopTimer();
+    document.getElementById("bpm").innerHTML = bpm;
     timerWorker.postMessage("stop");
     return "play";
   }
