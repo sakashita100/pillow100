@@ -66,8 +66,7 @@ function scheduleNote( time ) {
   var source = context.createBufferSource();
   source.buffer = beat;
   source.connect(context.destination);
-  source.start(time);
-  navigator.vibrate(200); 
+  source.start(time); 
 }
 
 function scheduler() {
