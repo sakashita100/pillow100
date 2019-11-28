@@ -32,10 +32,10 @@ var update = function() {
   if(count < bpms.length) {
     ++count;
     console.log("countup");
-  }
-  else if(count >= bpms.length) {
-    count = 0;
-    console.log("countdown");
+    if(count == bpms.length) {
+      count = 0;
+      console.log("countdown");
+    }
   }
   console.log(count);
   bpm = bpms[count];
