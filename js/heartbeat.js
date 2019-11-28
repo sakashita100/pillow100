@@ -11,11 +11,7 @@ var nextNoteTime = 0.0; //次のメモの期限が来たとき
 var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍の音を入れる箱
 const bpms = [
-  84, 87, 87, 89, 92, 89, 87, 84, 84, 82, 
-  81, 84, 83, 88, 88, 83, 85, 84, 83, 84, 
-  85, 82, 81, 85, 93, 84, 90, 91, 90, 87, 
-  85, 87, 87, 90, 86, 84, 83, 83, 87, 94, 
-  87, 87, 83, 85, 95, 92, 88, 84, 83, 102, 120
+  29, 30, 29, 30
 ];
 var bpm = bpms[0];
 var count = 0;
@@ -24,7 +20,7 @@ var timer = null;
 
 
 function startTimer() {
-  timer = setInterval(update, 10000);
+  timer = setInterval(update, 3000);
 }
 
 function stopTimer() {
