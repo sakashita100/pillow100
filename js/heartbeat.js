@@ -22,7 +22,7 @@ var count = 0;
 var timer = null;
 
 function startTimer() {
-  timer = setInterval(update, 60000);
+  timer = setInterval(update, 10000);
 }
 
 function stopTimer() {
