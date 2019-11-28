@@ -20,7 +20,7 @@ const bpms = [
 var bpm = bpms[0];
 var count = 0;
 var timer = null;
-var duration = 200; // 振動時間
+
 
 
 function startTimer() {
@@ -67,7 +67,7 @@ function scheduleNote( time ) {
   source.buffer = beat;
   source.connect(context.destination);
   source.start(time);
-  window.navigator.vibrate(duration);
+  navigator.vibrate(200); 
 }
 
 function scheduler() {
