@@ -28,15 +28,16 @@ function stopTimer() {
 }
 
 var update = function() {
-  count++;
+  console.log(count);
   if(count < bpms.length) {
+    ++count;
     console.log("countup");
   }
   else if(count >= bpm.length) {
     count = 0;
     console.log("countdown");
   }
-
+  console.log(count);
   bpm = bpms[count];
   document.getElementById("bpm").innerHTML = bpm;
 };
