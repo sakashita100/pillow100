@@ -33,7 +33,7 @@ var update = function() {
     ++count;
     console.log("countup");
   }
-  else if(count >= bpm.length) {
+  else if(count >= bpms.length) {
     count = 0;
     console.log("countdown");
   }
