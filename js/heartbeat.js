@@ -11,7 +11,7 @@ var nextNoteTime = 0.0; //次のメモの期限が来たとき
 var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍の音を入れる箱
 const bpms = [
-  29, 30, 29, 30
+  29, 29, 29, 29
 ];
 var bpm = bpms[0];
 var count = 0;
