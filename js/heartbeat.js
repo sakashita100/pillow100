@@ -96,7 +96,7 @@ function play() {
   } 
   else {
     stopTimer();
-    document.getElementById("bpm").innerHTML = bpm;
+    document.getElementById("bpm").innerHTML = 0;
     timerWorker.postMessage("stop");
     return "play";
   }
