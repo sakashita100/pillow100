@@ -21,7 +21,7 @@ const bpms =　data;  // data.split(',').map(Number);   //xmlHttp.responseText);
 
 
 
-var bpm = bpms[0];
+var bpm = bpms[0][0];
 var count = 0;
 var timer = null;
 
