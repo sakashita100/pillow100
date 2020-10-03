@@ -17,6 +17,7 @@ xmlHttp.send(null);
 
 data = "90,91,91,89,88,88,87,87,87,87,86,87,87,";
 const bpms = "[%s]".sprintf(data);   //xmlHttp.responseText);  // <-- ?
+bpms = [90,91,91,89,88,88,87,87,87,87,86,87,87,];
 
 
 /*const bpms = [
