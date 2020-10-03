@@ -16,8 +16,8 @@ var beat = null; //心拍の音を入れる箱
 //xmlHttp.send(null);
 
 var data = "90,91,91,89,88,88,87,87,87,87,86,87,87,";
-const bpms[0] =　data;  // data.split(',').map(Number);   //xmlHttp.responseText);  // <-- ?
-//const bpms = [90,91,91,89,88,88,87,87,87,87,86,87,87,];
+//const bpms =　data;  // data.split(',').map(Number);   //xmlHttp.responseText);  // <-- ?
+const bpms = [90,91,];
 
 
 
