@@ -15,9 +15,9 @@ var beat = null; //心拍の音を入れる箱
 //xmlHttp.open("GET", "http://54.248.228.235/index.txt", false);
 //xmlHttp.send(null);
 
-var data = "90,91,92,93,94,95," ;
-const bpms =　( data.split(',') + [','] ).map( str => parseInt(str, 10) );   //xmlHttp.responseText);  // <-- ?
-//const bpms = [97,98,99,100,101,102,];
+//var data = "90,91,92,93,94,95," ;
+//const bpms =　( data.split(',') + [','] ).map( str => parseInt(str, 10) );   //xmlHttp.responseText);  // <-- ?
+const bpms = [97,98,99,100,101,102,];
 
 
 
