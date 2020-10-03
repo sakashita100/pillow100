@@ -15,7 +15,7 @@ var xmlHttp = new XMLHttpRequest();
 xmlHttp.open("GET", "http://54.248.228.235/index.txt", false);
 xmlHttp.send(null);
 
-const bpms = "[%s]", xmlHttp;  // <-- ?
+const bpms = "[%s]".sprintf(xmlHttp);  // <-- ?
 
 
 /*const bpms = [
