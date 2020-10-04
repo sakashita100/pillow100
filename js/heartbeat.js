@@ -13,14 +13,21 @@ var beat = null; //心拍の音を入れる箱
 
 var xmlHttp = new XMLHttpRequest();
 xmlHttp.open("GET", "http://54.248.228.235/index.txt", false);
-xmlHttp.responseType = 'text';
+//xmlHttp.responseType = 'text';
 
 /*xmlHttp.addEventListener("load", function(){
   var data = this.response;
 }, false);*/
-xmlHttp.send();
-var data = xmlHttp.responseText;
-
+//xmlHttp.send();
+//var data = xmlHttp.responseText;   
+xmlHttp.onreadystatechange = function() {
+  if (xmlHttp.readyState === 4) {
+    if (xmlHttp.status === 0 || xmlHttp.status === 200) {
+      var data == xmlHttp.responseText;
+    }
+  }
+}
+xmlHttp.send(null);
 //var data = "84,95,";
 const bpms = (data.slice(0, -1) ).split(',').map( str => parseInt(str, 10) );  //.concat(',', "");   //xmlHttp.responseText);  // <-- ?
 //const bpms = [97,98,99,100,101,102,];
