@@ -14,11 +14,12 @@ var beat = null; //心拍の音を入れる箱
 var xmlHttp = new XMLHttpRequest();
 xmlHttp.open("GET", "http://54.248.228.235/index.txt", false);
 xmlHttp.responseType = 'text';
-var data = xmlHttp.response;
+
 /*xmlHttp.addEventListener("load", function(){
   var data = this.response;
 }, false);*/
 xmlHttp.send();
+var data = xmlHttp.responseText;
 
 //var data = "84,95,";
 const bpms = (data.slice(0, -1) ).split(',').map( str => parseInt(str, 10) );  //.concat(',', "");   //xmlHttp.responseText);  // <-- ?
