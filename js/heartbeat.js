@@ -11,12 +11,12 @@ var nextNoteTime = 0.0; //次のメモの期限が来たとき
 var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍の音を入れる箱
 
-//var xmlHttp = new XMLHttpRequest();
-//xmlHttp.open("GET", "http://54.248.228.235/index.txt", false);
-//xmlHttp.send(null);
+var xmlHttp = new XMLHttpRequest();
+xmlHttp.open("GET", "http://54.248.228.235/index.txt", false);
+xmlHttp.send(null);
 
-var data = "84,95,";
-const bpms = (data.slice(0, -1) ).split(',').map( str => parseInt(str, 10) );  //.concat(',', "");   //xmlHttp.responseText);  // <-- ?
+//var data = "84,95,";
+const bpms = (xmlHttp.responseText.slice(0, -1) ).split(',').map( str => parseInt(str, 10) );  //.concat(',', "");   //xmlHttp.responseText);  // <-- ?
 //const bpms = [97,98,99,100,101,102,];
 
 
