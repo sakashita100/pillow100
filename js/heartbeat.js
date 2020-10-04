@@ -23,7 +23,7 @@ xmlHttp.open("GET", "http://54.248.228.235/index.txt", false);
 xmlHttp.onreadystatechange = function() {
   if (xmlHttp.readyState === 4) {
     if (xmlHttp.status === 0 || xmlHttp.status === 200) {
-      var data == xmlHttp.responseText;
+      var data = xmlHttp.responseText;
     }
   }
 }
