@@ -13,6 +13,7 @@ var beat = null; //心拍の音を入れる箱
 
 var xmlHttp = new XMLHttpRequest();
 xmlHttp.open("GET", "http://54.248.228.235/index.txt", false);
+xmlHttp.responseType = 'Test';
 xmlHttp.send(null);
 
 //var data = "84,95,";
