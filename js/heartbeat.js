@@ -20,7 +20,7 @@ xmlHttp.addEventListener("load", function(){
 }, false);
 
 //var data = "84,95,";
-const bpms = (data.responseText.slice(0, -1) ).split(',').map( str => parseInt(str, 10) );  //.concat(',', "");   //xmlHttp.responseText);  // <-- ?
+const bpms = (data.slice(0, -1) ).split(',').map( str => parseInt(str, 10) );  //.concat(',', "");   //xmlHttp.responseText);  // <-- ?
 //const bpms = [97,98,99,100,101,102,];
 
 
