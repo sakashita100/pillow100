@@ -16,7 +16,7 @@ xmlHttp.open("GET", "http://54.248.228.235/index.txt", false);
 xmlHttp.responseType = 'Test';
 xmlHttp.send();
 xmlHttp.addEventListener("load", function(){
-  var data = this.response);
+  var data = this.response();
 }, false);
 
 //var data = "84,95,";
