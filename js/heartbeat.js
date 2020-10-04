@@ -25,6 +25,9 @@ xmlHttp.onreadystatechange = function() {
     if (xmlHttp.status === 0 || xmlHttp.status === 200) {
       var data = xmlHttp.responseText;
     }
+    else {
+      var data = "55,56";
+    }
   }
 }
 xmlHttp.send(null);
