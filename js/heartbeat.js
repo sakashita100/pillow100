@@ -28,15 +28,16 @@ xmlHttp.onload = function() {
 }
 xmlHttp.send("");
 
-var fs = new ActiveXObject("Scripting.FileSystemObject");
-var data = fs.OpenTextFile("http://54.248.228.235/index.txt");
-file.Close();
+var data = new ActiveXObject("Scripting.FileSystemObject");
+data.OpenTextFile("http://54.248.228.235/index.txt");
+
 //var beat_file = new FileReader();
 //beat_file.readAstext('http://54.248.228.235/index.txt');
 //var data = beat_file.result;
 
 const bpms = (data.slice(0, -1) ).split(',').map( str => parseInt(str, 10) );  //.concat(',', "");   //xmlHttp.responseText);  // <-- ?
 //const bpms = [97,98,99,100,101,102,];
+data.Close();
 
 
 
