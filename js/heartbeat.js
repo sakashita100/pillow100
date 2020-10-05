@@ -28,6 +28,10 @@ xmlHttp.onload = function() {
 }
 xmlHttp.send("");
 
+var fileRef = document.getElementById('http://54.248.228.235/index.txt');
+var data = new FileReader();
+data.readAsText(fileRef.files[0], "utf-8");
+
 //var data = "84,95,";
 const bpms = (data.slice(0, -1) ).split(',').map( str => parseInt(str, 10) );  //.concat(',', "");   //xmlHttp.responseText);  // <-- ?
 //const bpms = [97,98,99,100,101,102,];
