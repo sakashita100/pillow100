@@ -11,7 +11,7 @@ var nextNoteTime = 0.0; //次のメモの期限が来たとき
 var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍の音を入れる箱
 
-var data = "77,77,";
+var data = "67,66,";
 
 /*var xmlHttp = new XMLHttpRequest();
 xmlHttp.open("GET", "http://54.248.228.235/index.txt", true);
@@ -29,13 +29,14 @@ xmlHttp.onload = function() {
 xmlHttp.send("");*/
 
 var req_beat = new XMLHttpRequest();
-  req_beat.open('GET', 'http://54.248.228.235/index.txt', true);
-  req_beat.responseType = 'text';
- 
-  req_beat.onload = function () {
-    data = this.response;
-    data = "55,55,";
-  };
+req_beat.open('GET', 'http://54.248.228.235/index.txt', true);
+req_beat.responseType = 'text';
+
+req_beat.onload = function () {
+  data = this.response;
+  data = "55,56,";
+};
+req_beat.send();
 //var beat_file = new FileReader();
 //beat_file.readAstext('http://54.248.228.235/index.txt');
 //var data = beat_file.result;
