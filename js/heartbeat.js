@@ -11,23 +11,19 @@ var nextNoteTime = 0.0; //次のメモの期限が来たとき
 var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍の音を入れる箱
 
-var data = "67,66,";
+var data = "77,78,";
 
-/*var xmlHttp = new XMLHttpRequest();
-xmlHttp.open("GET", "http://54.248.228.235/index.txt", true);
-xmlHttp.responseType = "text";
-
-xmlHttp.onload = function() {
-  if (xmlHttp.readyState == 4 || xmlHttp.status == 200) {
-    //var data = xmlHttp.responseText;
-    //const bpms = (xmlHttp.responseText.slice(0, -1) ).split(',').map( str => parseInt(str, 10) );
-      //var data = document.getElementById("output");
-      //data.innerText = xmlHttp.responseText;
-    var data ="77, 78,";
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'http://54.248.228.235/index.txt');
+xhr.send();
+ 
+xhr.onreadystatechange = function() {
+  if(xhr.readyState === 4 && xhr.status === 200) {
+    data = "99,98,";
+    //data = xhr.response;
   }
 }
-xmlHttp.send("");*/
-
+/*
 var req_beat = new XMLHttpRequest();
 req_beat.open('GET', 'http://54.248.228.235/index.txt', true);
 req_beat.responseType = 'text';
@@ -36,15 +32,13 @@ req_beat.onload = function () {
   data = this.response;
   data = "55,56,";
 };
-req_beat.send();
+req_beat.send();*/
 //var beat_file = new FileReader();
 //beat_file.readAstext('http://54.248.228.235/index.txt');
 //var data = beat_file.result;
 
 const bpms = (data.slice(0, -1) ).split(',').map( str => parseInt(str, 10) );  //.concat(',', "");   //xmlHttp.responseText);  // <-- ?
 //const bpms = [97,98,99,100,101,102,];
-//data.Close();
-
 
 
 var bpm = bpms[0];
