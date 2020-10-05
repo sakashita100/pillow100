@@ -11,18 +11,19 @@ var nextNoteTime = 0.0; //次のメモの期限が来たとき
 var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍の音を入れる箱
 
-var data = "77,78,";
 
-var xhr = new XMLHttpRequest();
-xhr.open('GET', 'http://54.248.228.235/index.txt');
-xhr.send();
- 
+var data = "87,88,";
+var xhr = new XMLHttpRequest(); 
 xhr.onreadystatechange = function() {
-  if(xhr.readyState === 4 && xhr.status === 200) {
-    data = "99,98,";
-    //data = xhr.response;
+  if(xhr.readyState === 4) {
+    if (request.status === 0 || xhr.status === 200) {
+      data = "99,98,";
+      //data = xhr.response;
+    }
   }
 }
+xhr.open('GET', 'http://54.248.228.235/index.txt', true);
+xhr.send('');
 /*
 var req_beat = new XMLHttpRequest();
 req_beat.open('GET', 'http://54.248.228.235/index.txt', true);
