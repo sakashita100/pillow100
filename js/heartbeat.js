@@ -13,7 +13,7 @@ var beat = null; //心拍の音を入れる箱
 
 var data = "84,85,";
 
-var xmlHttp = new XMLHttpRequest();
+/*var xmlHttp = new XMLHttpRequest();
 xmlHttp.open("GET", "http://54.248.228.235/index.txt", true);
 xmlHttp.responseType = "text";
 
@@ -26,18 +26,23 @@ xmlHttp.onload = function() {
     var data ="77, 78,";
   }
 }
-xmlHttp.send("");
+xmlHttp.send("");*/
 
-var data = new ActiveXObject("Scripting.FileSystemObject");
-data.OpenTextFile("http://54.248.228.235/index.txt");
-
+var req_beat = new XMLHttpRequest();
+  req_beat.open('GET', 'http://54.248.228.235/index.txt', true);
+  req_beat.responseType = 'text';
+ 
+  req_beat.onload = function () {
+    var data = this.response;
+    console.log(data);
+  };
 //var beat_file = new FileReader();
 //beat_file.readAstext('http://54.248.228.235/index.txt');
 //var data = beat_file.result;
 
 const bpms = (data.slice(0, -1) ).split(',').map( str => parseInt(str, 10) );  //.concat(',', "");   //xmlHttp.responseText);  // <-- ?
 //const bpms = [97,98,99,100,101,102,];
-data.Close();
+//data.Close();
 
 
 
