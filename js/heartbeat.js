@@ -19,9 +19,9 @@ request.responseType = 'text';
 xhr.onload = function() {
   data = "99,98,";
   //data = this.response;
-xhr.open('GET', 'http://54.248.228.235/index.txt', true);
-//data = xhr.responseText;
+  //data = xhr.responseText;
 xhr.send('');
+data = "55,56,";
 
 //var beat_file = new FileReader();
 //beat_file.readAstext('http://54.248.228.235/index.txt');
