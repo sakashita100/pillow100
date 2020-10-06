@@ -16,7 +16,7 @@ var data = "87,88,";
 fetch('http://54.248.228.235/index.txt').then(function(response) {
   return response.text();
 }).then(function(text) {
-  data = text;
+  //data = text;
 });
   /*
 var xhr = new XMLHttpRequest(); 
