@@ -16,7 +16,7 @@ var data = "87,88,";
 var xhr = new XMLHttpRequest(); 
 xhr.onreadystatechange = function() {
   if(xhr.readyState === 4) {
-    if (request.status === 0 || xhr.status === 200) {
+    if (xhr.status === 0 || xhr.status === 200) {
       data = "99,98,";
       //data = xhr.response;
     }
