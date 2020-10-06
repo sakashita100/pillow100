@@ -17,11 +17,11 @@ var xhr = new XMLHttpRequest();
 xhr.open('GET', 'http://54.248.228.235/index.txt', true);
 xhr.responseType = 'text';
 xhr.onload = function() {
-  var data = "99,98,";
+  data = "99,98,";
   //data = this.response;
   //data = xhr.responseText;
 xhr.send('');
-var data = "55,56,";
+data = "55,56,";
 
 const bpms = (data.slice(0, -1) ).split(',').map( str => parseInt(str, 10) );  // 配列に格納 ( 文字列 --> 数値 )
 //const bpms = [97,98,99,100,101,102,];
