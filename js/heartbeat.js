@@ -14,13 +14,14 @@ var beat = null; //心拍の音を入れる箱
 /* ----- 変更部分 ----- */
 var data = "87,88,";
 var xhr = new XMLHttpRequest(); 
-xhr.open('GET', 'http://54.248.228.235/index.txt', false);
 xhr.responseType = 'text';
 xhr.onload = () => {
-  //data = atob(xhr.response);
-  const bpms = (xhr.response.slice(0, -1) ).split(',').map( str => parseInt(str, 10) );  // 配列に格納 ( 文字列 --> 数値 )
+  data = atob(xhr.response);
 }
+xhr.open('GET', 'http://54.248.228.235/index.txt', false);
 xhr.send('');
+
+const bpms = (data.response.slice(0, -1) ).split(',').map( str => parseInt(str, 10) );  // 配列に格納 ( 文字列 --> 数値 )
 //const bpms = [97,98,99,100,101,102,];
 /* ---------------------- */
 
