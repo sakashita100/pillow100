@@ -14,7 +14,7 @@ var beat = null; //心拍の音を入れる箱
 /* ----- 変更部分 ----- */
 var data = "87,88,";
 var xhr = new XMLHttpRequest(); 
-xhr.responseType = 'text';
+xhr.responseType = 'document';
 xhr.onload = () => {
   data = atob(xhr.response);
 }
