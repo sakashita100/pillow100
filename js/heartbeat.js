@@ -20,6 +20,7 @@ xhr.onload = function() {
   data = "99,98,";
   //data = this.response;
   //data = xhr.responseText;
+}
 xhr.send('');
 data = "55,56,";
 
