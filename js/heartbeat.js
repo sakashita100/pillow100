@@ -23,18 +23,9 @@ xhr.onreadystatechange = function() {
   }
 }
 xhr.open('GET', 'http://54.248.228.235/index.txt', true);
+//data = xhr.responseText;
 xhr.send('');
-data = xhr.responseText;
-/*
-var req_beat = new XMLHttpRequest();
-req_beat.open('GET', 'http://54.248.228.235/index.txt', true);
-req_beat.responseType = 'text';
 
-req_beat.onload = function () {
-  data = this.response;
-  data = "55,56,";
-};
-req_beat.send();*/
 //var beat_file = new FileReader();
 //beat_file.readAstext('http://54.248.228.235/index.txt');
 //var data = beat_file.result;
