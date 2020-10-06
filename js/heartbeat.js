@@ -17,7 +17,7 @@ var xhr = new XMLHttpRequest();
 xhr.open('GET', 'http://54.248.228.235/index.txt', false);
 xhr.responseType = 'text';
 xhr.onload = () => {
-  data = "90,91,";  //xhr.responseText;
+  data = xhr.response.toString('utf-8');
 }
 xhr.send('');
 
