@@ -12,7 +12,7 @@ var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍の音を入れる箱
 
 
-var data = "87,88,";
+var data = "77,78,";
 var xhr = new XMLHttpRequest(); 
 xhr.onreadystatechange = function() {
   if(xhr.readyState === 4) {
