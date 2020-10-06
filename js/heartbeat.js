@@ -12,16 +12,13 @@ var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍の音を入れる箱
 
 
-var data = "87,98,";
+var data = "87,88,";
 var xhr = new XMLHttpRequest(); 
-xhr.onreadystatechange = function() {
-  if(xhr.readyState === 4) {
-    if (xhr.status === 0 || xhr.status === 200) {
-      data = "99,98,";
-      //data = xhr.response;
-    }
-  }
-}
+xhr.open('GET', 'http://54.248.228.235/index.txt', true);
+request.responseType = 'text';
+xhr.onload = function() {
+  data = "99,98,";
+  //data = this.response;
 xhr.open('GET', 'http://54.248.228.235/index.txt', true);
 //data = xhr.responseText;
 xhr.send('');
