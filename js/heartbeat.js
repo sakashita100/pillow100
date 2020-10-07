@@ -27,11 +27,11 @@ xhr.onload = () => {
 xhr.open('GET', 'http://54.248.228.235/index.txt', false);
 
 xhr.onload = function(e) {
-  if (xhr.readyState === 4) {
-    if (xhr.status === 200) {
-      data = "50,55,"; //xhr.responseText;
-    }
+  //if (xhr.readyState === 4) {
+  if (xhr.status === 200) {
+    data = "50,55,"; //xhr.responseText;
   }
+ // }
 }
 xhr.send(null);
 
