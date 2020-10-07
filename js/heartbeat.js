@@ -16,7 +16,7 @@ var data = "87,88,";
 var xhr = new XMLHttpRequest(); 
 fetch('http://54.248.228.235/index.txt')
   .then(response => {
-    data = response.text();
+    data = response.Text;
   };
 
 /*xhr.responseType = 'text';
