@@ -13,12 +13,13 @@ var beat = null; //心拍の音を入れる箱
 
 /* ----- 変更部分 ----- */
 var data = "87,88,";
+var xhr = new XMLHttpRequest(); 
 /*fetch('http://54.248.228.235/index.txt')
   .then(response => {
     data = response.text();
   };*/
-/*var xhr = new XMLHttpRequest(); 
-xhr.responseType = 'text';
+
+/*xhr.responseType = 'text';
 xhr.onload = () => {
   data = xhr.response.message;
 }*/
