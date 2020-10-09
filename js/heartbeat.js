@@ -12,7 +12,7 @@ var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍の音を入れる箱
 
 /* ----- 変更部分 ----- */
-var data = "67,68,";
+//var data = "67,68,";
 var xhr = new XMLHttpRequest(); 
 /*fetch('http://54.248.228.235/index.txt')
   .then(response => {
@@ -28,10 +28,10 @@ xhr.open('GET', 'http://54.248.228.235/index.txt', false);
 
 xhr.onload = function(e) {
   if (xhr.readyState === 4) {
-    //if (xhr.status === 200) {
-    data = "50,55,"; //xhr.responseText;
+    if (xhr.status === 200) {
+      data = xhr.responseText;
+    }
   }
- // }
 }
 xhr.send(null);
 
