@@ -24,7 +24,7 @@ xhr.onload = () => {
   data = xhr.response.message;
 }*/
 
-xhr.open('GET', 'http://54.248.228.235/index.txt', false);
+xhr.open('GET', 'https://heart-rate-get.com/index.txt', false);
 
 xhr.onload = function(e) {
   if (xhr.readyState === 4) {
