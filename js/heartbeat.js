@@ -11,18 +11,10 @@ var nextNoteTime = 0.0; //次のメモの期限が来たとき
 var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍の音を入れる箱
 
-/* ----- 変更部分 ----- */
-var data = "67,68,";
-var xhr = new XMLHttpRequest(); 
-/*fetch('http://54.248.228.235/index.txt')
-  .then(response => {
-    data = responseText;
-  };*/
 
-/*xhr.responseType = 'text';
-xhr.onload = () => {
-  data = xhr.response.message;
-}*/
+/* ----- 変更部分 ----- */
+var xhr = new XMLHttpRequest(); 
+xhr.withCredentials = true;
 
 xhr.open('GET', 'https://heart-rate-get.com/index.txt', false);
 
@@ -30,13 +22,13 @@ xhr.onload = function(e) {
   if (xhr.readyState === 4) {
     if (xhr.status === 200) {
       data = xhr.responseText;
+      console.log(data)
     }
   }
 }
 xhr.send(null);
-
-const bpms = (data.response.slice(0, -1) ).split(',').map( str => parseInt(str, 10) );  // 配列に格納 ( 文字列 --> 数値 )
-//const bpms = [97,98,99,100,101,102,];
+const bpms = data.split(',').map( str => parseInt(str, 10));
+console.log(bpms[0])
 /* ---------------------- */
 
 
