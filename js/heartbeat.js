@@ -13,6 +13,7 @@ var beat = null; //心拍の音を入れる箱
 
 
 /* ----- 変更部分 ----- */
+var data "64,65,";
 var xhr = new XMLHttpRequest(); 
 xhr.withCredentials = true;
 
@@ -21,7 +22,7 @@ xhr.open('GET', 'https://heart-rate-get.com/index.txt', false);
 xhr.onload = function(e) {
   if (xhr.readyState === 4) {
     if (xhr.status === 200) {
-      var data = xhr.responseText;
+      data = xhr.responseText;
       console.log(data)
     }
   }
