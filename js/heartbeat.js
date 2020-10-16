@@ -13,7 +13,7 @@ var beat = null; //心拍の音を入れる箱
 
 
 /* ----- 変更部分 ----- */
-var data "64,65,";
+var data = "64,65,";
 var xhr = new XMLHttpRequest(); 
 xhr.withCredentials = true;
 
