@@ -21,7 +21,7 @@ xhr.open('GET', 'https://heart-rate-get.com/index.txt', false);
 xhr.onload = function(e) {
   if (xhr.readyState === 4) {
     if (xhr.status === 200) {
-      data = xhr.responseText;
+      var data = xhr.responseText;
       console.log(data)
     }
   }
