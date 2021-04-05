@@ -12,12 +12,11 @@ var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍の音を入れる箱
 
 
-/* ----- 変更部分 ----- */
 var data = "64,65,";
 var xhr = new XMLHttpRequest(); 
 xhr.withCredentials = true;
 
-xhr.open('GET', 'https://heart-rate-get.com/index.txt', false);
+xhr.open('GET', 'https://heartrate-dev.herokuapp.com/', false);
 
 xhr.onload = function(e) {
   if (xhr.readyState === 4) {
@@ -30,7 +29,6 @@ xhr.onload = function(e) {
 xhr.send(null);
 const bpms = data.split(',').map( str => parseInt(str, 10));
 console.log(bpms[0])
-/* ---------------------- */
 
 
 var bpm = bpms[0];
