@@ -16,7 +16,7 @@ var data = "64,65,";
 var xhr = new XMLHttpRequest(); 
 xhr.withCredentials = true;
 
-xhr.open('GET', 'https://heartrate-dev.herokuapp.com/', false);
+xhr.open('GET', 'https://docs.google.com/document/d/1geWxvtEg0FLtCwVCYnzxupXwelvu2hxysyghs3vJm4g/edit?usp=sharing', false);
 
 xhr.onload = function(e) {
   if (xhr.readyState === 4) {
