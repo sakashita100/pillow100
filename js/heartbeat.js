@@ -16,7 +16,7 @@ var data = "64,65,";
 var xhr = new XMLHttpRequest(); 
 xhr.withCredentials = true;
 
-xhr.open('GET', 'https://docs.google.com/document/d/1geWxvtEg0FLtCwVCYnzxupXwelvu2hxysyghs3vJm4g/preview', false);
+xhr.open('GET', 'https://docs.google.com/document/d/e/2PACX-1vS_yjvjiQlE_JrMN1_Mnxj9Mu_SJQqlI2XxzDYoNcZy-j9kQ24Tn_Bkt18lnXjwxOdzg9XENe6O9qjn/pub', false);
 
 xhr.onload = function(e) {
   if (xhr.readyState === 4) {
