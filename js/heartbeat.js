@@ -12,11 +12,11 @@ var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍の音を入れる箱
 
 
-var data = "64,65,";
+var data = "66,65,";
 var xhr = new XMLHttpRequest(); 
 xhr.withCredentials = true;
 
-xhr.open('GET', 'http://172.17.0.1/beat.txt', false);
+xhr.open('GET', 'http://192.168.73.170/beat.txt', false);
 
 xhr.onload = function(e) {
   if (xhr.readyState === 4) {
