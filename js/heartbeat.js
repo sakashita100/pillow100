@@ -12,8 +12,8 @@ var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍の音を入れる箱
 
 
-var data = "66,65,";
-var xhr = new XMLHttpRequest(); 
+var data = "78,78,77,76,77,75,76,77,77,78,78,79,78,78,76,77,79,80,80,81,80,79,79,77,78,78,";
+/*var xhr = new XMLHttpRequest(); 
 xhr.withCredentials = true;
 
 xhr.open('GET', 'http://192.168.73.170/beat.txt', false);
@@ -28,7 +28,7 @@ xhr.onload = function(e) {
 }
 xhr.send(null);
 const bpms = data.split(',').map( str => parseInt(str, 10));
-console.log(bpms[0])
+console.log(bpms[0])*/
 
 
 var bpm = bpms[0];
