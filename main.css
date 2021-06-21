@@ -11,7 +11,7 @@ div {
 	background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
 	background-color:#79bbff
 	/**/
-	background-image:url('/img/search.png');
+	background-image:url('/search.jpg');
 	-moz-border-radius:100px;
 	-webkit-border-radius:100px;
 	display:inline-block;
