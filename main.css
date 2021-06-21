@@ -11,14 +11,6 @@ div {
 	background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
 	background-color:#79bbff
 	
-	/*background-image:url('/heart.jpg');*/
-	-moz-border-radius:100px;
-	-webkit-border-radius:100px;
-	display:inline-block;
- 	margin-top:12px;
-  	
-  	height:48px;
-	
 	border-radius:50px;
 	color:#ffffff;
 	padding:8px 24px;
@@ -26,6 +18,16 @@ div {
 	text-shadow:1px 1px 6px #000000;
 	width: 60px;
 	text-align: center;
+}
+
+.button {
+	
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	display:inline-block;
+ 	margin-top:12px;
+  	weight:48px;
+  	height:48px;
 }
 
 .play:hover {
