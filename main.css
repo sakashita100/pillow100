@@ -28,7 +28,29 @@ disp {
    	height:250px;
    	background: url(heart.jpg) left top no-repeat;*/
 }
-
+.sample00 {
+  display    : inline-block;
+  position   : relative;
+  padding    : 0;
+}
+ /* --- 文字BOX(子要素) ------------------ */
+.sample1 {
+  position   : absolute;                   /* 親要素からの絶対位置 */
+  box-sizing : border-box;
+  display    : block;                      /* ブロック要素にする */
+  width      : 100%;                       /* 親要素の幅に合わせる */
+  color      : rgba(64, 64, 255, 0.80);    /* 文字色（透明度） */
+  background : rgba(255, 255, 255, 0.50);  /* 背景色（透明度） */
+  top        : 50%;                        /* 親要素からの上位置 */
+  left       : 0;                          /* 親要素からの左位置 */
+  text-align : center;                     /* 文字位置 */
+  transform  : translateY(-50%);           /* 文字BOXの位置ずらし */
+  padding    : 10px 0;                     /* BOX内の余白 */
+  font-size  : 30pt;                       /* 文字サイズ */
+  font-weight: bold;                       /* 太字 */
+  line-height: 1em;                        /* 1行の高さ */
+  overflow   : hidden;
+}
 .sample1 span{
   display     : inline-block;
   padding-left: 100%;
