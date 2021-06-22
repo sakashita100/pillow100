@@ -22,7 +22,7 @@ div {
 	border: 10px;
     	width:204px;
    	height:155px;
-   	background: url(heart.jpg) left top no-repeat;
+   	/*background: url(heart.jpg) left top no-repeat;*/
 }
 
 .play:hover {
