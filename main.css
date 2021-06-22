@@ -46,6 +46,8 @@ a.btn-green:after {
 }
 a.btn-green:hover {
   background: #6FB83F;
+  cursor: pointer;
+  opacity:0.5;
 }
 @media screen and (min-width: 768px){
   a.btn-green{
