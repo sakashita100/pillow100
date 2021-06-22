@@ -21,6 +21,17 @@ div {
 	text-align: center;
 }
 
+.play:before {
+	content:"";
+	display:inline-block;
+	width: 18px;
+	height: 18px;
+	margin: -3px 5px 0 0;
+	background: url("/heart.jpg") no-repeat;
+	background-size: contain;
+	vertical-align: middle;
+}
+
 
 .play:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff) );
