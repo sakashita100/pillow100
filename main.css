@@ -22,17 +22,20 @@ disp {
 	text-decoration:none;
 	text-shadow:1px 1px 6px #000000;
 	width: 60px;
-	text-align: center;*/
+	text-align: center;
 	border: 2px;
     	width:250px;
    	height:250px;
-   	/*background: url(heart.jpg) left top no-repeat;*/
+   	background: url(heart.jpg) left top no-repeat;*/
 }
 
 .play:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff) );
 	background:-moz-linear-gradient( center top, #378de5 5%, #79bbff 100% );
 	background-color:#378de5;
+	disp {
+	background-color:#ffffff;
+}
 }
 
 .play:active {
