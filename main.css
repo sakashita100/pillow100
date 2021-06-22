@@ -34,7 +34,7 @@ a.btn-green{
   text-align:center;
   text-decoration:none !important;
 }
-a.btn-green:before {
+a.btn-green:after {
   content: "";
   display: inline-block;
   width: 18px;
