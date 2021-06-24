@@ -7,24 +7,9 @@ body {
 	background-color:#ffffff;  /*#e36868;*/
 }
 
-.imgArea {
-  display    : inline-block;
-  position   : relative;
-  padding    : 0
-}
- /* --- 文字BOX(子要素) ------------------ */
-.over {
-  position   : absolute;                   /* 親要素からの絶対位置 */
-  box-sizing : border-box;
-  white-space: nowrap;                     /* 折返しなし */
-  display    : inline-block;               /* 文字囲みのBOXにする */
-  color      : #000000;    /* 文字色（透明度） */
-  top        : 50%;                        /* 親要素からの上位置 */
-  left       : 50%;                        /* 親要素からの左位置 */
-  transform  : translate(-50%, -50%);      /* 文字BOXの位置ずらし */
-  font-size  : 30pt;                       /* 文字サイズ */
-  font-weight: bold;                       /* 太字 */
-  line-height: 1em;                        /* 1行の高さ */
+.background.scroll {
+  background-image: url("heart.jpg");
+  background-attachment: scroll;
 }
 
 .play {
