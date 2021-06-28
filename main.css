@@ -22,8 +22,8 @@ div {
 	border: 2px;
     	width:250px;
    	height:250px;
-   	background: url(heart.jpg) left top no-repeat;*/
-	background-color:#e36868;
+   	background: url(heart.jpg) left top no-repeat;
+	background-color:#e36868;*/
 }
 
 .play:hover {
