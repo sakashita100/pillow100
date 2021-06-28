@@ -5,24 +5,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .pors {
-    display: block;
-    width: 100px;
-}
-
-/*box p {
     position: absolute;
     top: 50%;
     left: 50%;
     -webkit-transform : translate(-50%,-50%);
     transform : translate(-50%,-50%);
-}*/
+}
 
 body {
-    background-color:#ffffff; /* 背景色 */
+    background-color:#00ffff; /* 背景色 */
 }
 
 .bpm {
