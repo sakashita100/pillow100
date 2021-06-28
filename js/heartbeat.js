@@ -104,11 +104,6 @@ function play() {
   }
 
   isPlaying = !isPlaying;
-
-  
-  function DspRed(){
-    document.bgColor = '#ff0000';
-  }
   
   if (isPlaying) { // start playing
     currentNote = 0;
@@ -117,12 +112,14 @@ function play() {
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
     return "stop";
+    document.bgColor = '#ff0000';
   } 
   else {
     stopTimer();
     document.getElementById("bpm").innerHTML = 0;
     timerWorker.postMessage("stop");
     return "play";
+    document.bgColor = '#ffffff';
   }
 }
 
