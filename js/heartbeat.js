@@ -94,7 +94,7 @@ function scheduler() {
 }
 
 function dspRed() {
-  return '#e6e6e6';
+  return '#ffa6a6';
 }
 
 function play() {
