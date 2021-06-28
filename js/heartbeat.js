@@ -112,6 +112,7 @@ function play() {
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
     return "stop";
+    document.getElementById('').style.backgroundColor = newColor;
   } 
   else {
     stopTimer();
