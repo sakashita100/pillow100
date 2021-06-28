@@ -13,8 +13,7 @@ body {
 
 .bpm p {
     position: absolute;
-    top: 0;
-    left: 0;
+    text-align:center;
 }
 
 .status {
@@ -23,8 +22,7 @@ body {
 
 .status p {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    text-align:center;
 }
 
 .play {
