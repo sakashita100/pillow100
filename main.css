@@ -22,15 +22,6 @@ body {
     text-align:center;
 }*/
 
-.status {
-    display: inline-block;
-}
-
-/*.status p {
-    position: absolute;
-    text-align:center;
-}*/
-
 .play {
 	/*-moz-box-shadow:inset 0px 20px 26px 0px #b6cde3;
 	-webkit-box-shadow:inset 0px 20px 26px 0px #b6cde3;
