@@ -19,7 +19,7 @@ body {
 }*/
 
 .status {
-    text-align:center;
+    display: inline-block;
 }
 
 /*.status p {
