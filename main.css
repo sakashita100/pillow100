@@ -12,20 +12,20 @@ body {
     text-align:center
 }
 
-.bpm p {
-    /*position: absolute;*/
+/*.bpm p {
+    position: absolute;
     text-align:center;
-}
+}*/
 
 .status {
     position: relative;
     text-align:center
 }
 
-.status p {
-    /*position: absolute;*/
+/*.status p {
+    position: absolute;
     text-align:center;
-}
+}*/
 
 .play {
 	/*-moz-box-shadow:inset 0px 20px 26px 0px #b6cde3;
