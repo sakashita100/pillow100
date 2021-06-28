@@ -7,13 +7,13 @@ body {
     background-color:#ffffff; /* 背景色 */
 }
 
-.bpm {
+.bpm p {
     position: absolute;
     top: 5;
     left: 10;
 }
 
-.status {
+.status p {
     position: absolute;
     top: 10;
     left: 10;
