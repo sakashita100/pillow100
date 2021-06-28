@@ -1,8 +1,15 @@
 box {
     max-width: 90%;
     margin: 0 auto;
-    text-align:center;
-    /*position: relative;*/
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+pors {
+    display: block;
+    width: 100px;
 }
 
 /*box p {
