@@ -93,10 +93,6 @@ function scheduler() {
   }
 }
 
-function dspRed() {
-  return '#ffa6a6';
-}
-
 function play() {
   if (!unlocked) {
     //サイレントバッファを再生してオーディオのロックを解除します
@@ -116,12 +112,14 @@ function play() {
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
     return "stop";
+    document.body.style.backgroundColor = "#ffa6a6";
   } 
   else {
     stopTimer();
     document.getElementById("bpm").innerHTML = 0;
     timerWorker.postMessage("stop");
     return "play";
+    document.body.style.backgroundColor = "#ffffff";
   }
 }
 
