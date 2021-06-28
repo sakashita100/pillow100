@@ -2,16 +2,16 @@ box {
     max-width: 90%;
     margin: 0 auto;
     text-align:center;
-    position: relative;
+    /*position: relative;*/
 }
 
-box p {
-    /*position: absolute;
+/*box p {
+    position: absolute;
     top: 50%;
     left: 50%;
     -webkit-transform : translate(-50%,-50%);
-    transform : translate(-50%,-50%);*/
-}
+    transform : translate(-50%,-50%);
+}*/
 
 body {
     background-color:#ffffff; /* 背景色 */
