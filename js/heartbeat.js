@@ -106,7 +106,7 @@ function play() {
   isPlaying = !isPlaying;
   
   if (isPlaying) { // start playing
-    document.body.style.backgroundColor = "#ffa6a6";
+    document.body.style.backgroundColor = '#ffa6a6';
     currentNote = 0;
     document.getElementById("bpm").innerHTML = bpm;
     startTimer();
@@ -116,7 +116,7 @@ function play() {
   } 
   else {
     stopTimer();
-    document.body.style.backgroundColor = "#ffffff";
+    document.body.style.backgroundColor = '#ffffff';
     document.getElementById("bpm").innerHTML = 0;
     timerWorker.postMessage("stop");
     return "play";
