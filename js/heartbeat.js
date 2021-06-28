@@ -93,7 +93,7 @@ function scheduler() {
   }
 }
 
-function DspRed() {
+function dspRed() {
   return '#e6e6e6';
 }
 
