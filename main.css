@@ -1,6 +1,12 @@
-div {
+.box {
     max-width: 90%;
     margin: 0 auto;
+}
+
+.box p {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 body {
