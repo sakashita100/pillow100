@@ -7,10 +7,18 @@ body {
     background-color:#ffffff; /* 背景色 */
 }
 
+.bpm {
+    position: relative;
+}
+
 .bpm p {
     position: absolute;
     top: 5;
     left: 10;
+}
+
+.status {
+    position: relative;
 }
 
 .status p {
