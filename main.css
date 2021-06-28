@@ -1,6 +1,7 @@
 div {
     max-width: 90%;
     margin: 0 auto;
+    text-align:center;
 }
 
 body {
@@ -9,7 +10,7 @@ body {
 
 .bpm {
     /*position: relative;*/
-    text-align:center
+    text-align:center;
 }
 
 /*.bpm p {
@@ -18,7 +19,7 @@ body {
 }*/
 
 .status {
-    text-align:center
+    text-align:center;
 }
 
 /*.status p {
