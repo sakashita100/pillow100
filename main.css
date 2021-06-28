@@ -1,7 +1,6 @@
 .box {
     max-width: 90%;
     margin: 0 auto;
-    text-align:center;
 }
 
 body {
@@ -10,6 +9,7 @@ body {
 
 .bpm {
     /*position: relative;*/
+    text-align:center
 }
 
 .bpm p {
@@ -19,6 +19,7 @@ body {
 
 .status {
     position: relative;
+    text-align:center
 }
 
 .status p {
