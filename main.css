@@ -1,4 +1,4 @@
-box {
+.box {
     max-width: 90%;
     margin: 0 auto;
 
@@ -7,7 +7,7 @@ box {
     align-items: center;
 }
 
-pors {
+.pors {
     display: block;
     width: 100px;
 }
