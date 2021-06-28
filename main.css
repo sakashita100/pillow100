@@ -1,7 +1,6 @@
 div {
     max-width: 90%;
     margin: 0 auto;
-    background-color: #ffa6a6;
 }
 
 .play {
@@ -24,7 +23,6 @@ div {
     	width:250px;
    	height:250px;
    	background: url(heart.jpg) left top no-repeat;*/
-	background-color:#e36868;
 }
 
 .play:hover {
