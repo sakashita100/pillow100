@@ -28,7 +28,6 @@ div {
 .play:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff) );
 	background:-moz-linear-gradient( center top, #378de5 5%, #79bbff 100% );
-	body {background-color: #90ee90; }
 }
 
 .play:active {
