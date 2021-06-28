@@ -8,7 +8,8 @@ body {
 }
 
 .bpm {
-    position: relative;
+    /*position: relative;*/
+    margin: 10px auto;
 }
 
 .bpm p {
