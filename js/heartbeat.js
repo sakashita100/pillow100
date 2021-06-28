@@ -106,8 +106,8 @@ function play() {
   isPlaying = !isPlaying;
 
   
-  function DspBlue(){
-	  document.bgColor = 'blue';
+  function DspRed(){
+    document.bgColor = '#ff0000';
   }
   
   if (isPlaying) { // start playing
