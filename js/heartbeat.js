@@ -105,6 +105,11 @@ function play() {
 
   isPlaying = !isPlaying;
 
+  
+  function DspBlue(){
+	  document.bgColor = 'blue';
+  }
+  
   if (isPlaying) { // start playing
     currentNote = 0;
     document.getElementById("bpm").innerHTML = bpm;
@@ -112,7 +117,6 @@ function play() {
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
     return "stop";
-    document.getElementById('').style.backgroundColor = newColor;
   } 
   else {
     stopTimer();
