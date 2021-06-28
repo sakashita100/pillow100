@@ -3,10 +3,16 @@
     margin: 0 auto;
 }
 
-.box p {
+.bpm {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 5;
+    left: 10;
+}
+
+.bpm {
+    position: absolute;
+    top: 10;
+    left: 10;
 }
 
 body {
