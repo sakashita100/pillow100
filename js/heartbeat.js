@@ -106,20 +106,20 @@ function play() {
   isPlaying = !isPlaying;
   
   if (isPlaying) { // start playing
+    document.body.style.backgroundColor = "#ffa6a6";
     currentNote = 0;
     document.getElementById("bpm").innerHTML = bpm;
     startTimer();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
     return "stop";
-    document.body.style.backgroundColor = "#ffa6a6";
   } 
   else {
     stopTimer();
+    document.body.style.backgroundColor = "#ffffff";
     document.getElementById("bpm").innerHTML = 0;
     timerWorker.postMessage("stop");
     return "play";
-    document.body.style.backgroundColor = "#ffffff";
   }
 }
 
