@@ -1,7 +1,11 @@
-div {
+box {
     max-width: 90%;
     margin: 0 auto;
-    text-align:center;
+    /*text-align:center;*/
+}
+
+box p {
+    line-height: 150px;
 }
 
 body {
