@@ -5,23 +5,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .pors {
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform : translate(-50%,-50%);
-    transform : translate(-50%,-50%);
-}
-
-body {
-    background-color:#ffffff; /* 背景色 */
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
 }
 
 .bpm {
     /*position: relative;*/
     text-align:center;
+}
+
+body {
+    background-color:#ffffff; /* 背景色 */
 }
 
 /*.bpm p {
