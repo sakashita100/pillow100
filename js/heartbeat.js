@@ -109,7 +109,7 @@ function play() {
     document.body.style.backgroundColor = '#ffa6a6';
     currentNote = 0;
     document.getElementById("bpm").innerHTML = bpm;
-    document.getElementById("area1").innerHTML = "<p><font size="5">play</font></p>";
+    document.getElementById("area1").innerHTML = "<p><font size="5">stop</font></p>";
     startTimer();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
