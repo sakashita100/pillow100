@@ -109,20 +109,20 @@ function play() {
     document.body.style.backgroundColor = '#ffa6a6';
     currentNote = 0;
     document.getElementById("bpm").innerHTML = bpm;
-    document.getElementById("area1").innerHTML = "stop";
+    document.getElementById("area1").innerText = "stop";
     startTimer();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
-    return "stop";
+    //return "stop";
     
   } 
   else {
     stopTimer();
     document.body.style.backgroundColor = '#ffffff';
     document.getElementById("bpm").innerHTML = 0;
-    document.getElementById("area1").innerHTML = "play";
+    document.getElementById("area1").innerText = "play";
     timerWorker.postMessage("stop");
-    return "play";
+    //return "play";
     
     
   }
