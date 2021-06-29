@@ -113,7 +113,7 @@ function play() {
     startTimer();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
-    //return "stop";
+    return "stop";
     
   } 
   else {
@@ -122,7 +122,7 @@ function play() {
     document.getElementById("bpm").innerHTML = 0;
     document.getElementById("area1").innerText = "play";
     timerWorker.postMessage("stop");
-    //return "play";
+    return "play";
     
     
   }
