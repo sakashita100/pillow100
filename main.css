@@ -8,7 +8,7 @@
     position: relative;
 }
 
-#area1 {
+.area1 {
     position: absolute;
     top: 50%;
     left: 50%;
