@@ -120,7 +120,7 @@ function play() {
     stopTimer();
     document.body.style.backgroundColor = '#ffffff';
     document.getElementById("bpm").innerHTML = 0;
-    document.getElementById("area1").innerText = <p><font size="5">play</font></p>;
+    document.getElementById("area1").innerText = "<p><font size="5">play</font></p>";
     timerWorker.postMessage("stop");
     return "play";
     
