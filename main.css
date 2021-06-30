@@ -1,7 +1,10 @@
-.box {
+body {
+    background-color:#ffffff; /* 背景色 */
     max-width: 90%;
     margin: 0 auto;
+}
 
+.box {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,14 +20,6 @@
     transform: translate(-50%,-50%);
     margin:0;
     padding:0;
-}
-
-/*.bpm{
-    text-align:center;
-}*/
-
-body {
-    background-color:#ffffff; /* 背景色 */
 }
 
 .play {
