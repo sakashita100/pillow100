@@ -47,11 +47,11 @@ div {
     	width:250px;
    	height:250px;
    	background: url(heart.jpg) left top no-repeat;*/
-	background-color:#ffffff;
+	background:#ffffff;
 }
 
 .play:hover {
-	background-color:#ffa6a6;
+	background:#ffa6a6;
 	/*background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #ffffff) );
 	background:-moz-linear-gradient( center top, #ffa6a6 5%, #ffa6a6 100% );*/
 }
