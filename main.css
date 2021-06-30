@@ -14,7 +14,7 @@ div {
     justify-content: center;
     align-items: center;
     position: relative;
-    /*background: transparent;*/
+    background: transparent;
 }
 
 .elem {
@@ -48,7 +48,7 @@ div {
     	width:250px;
    	height:250px;
    	background: url(heart.jpg) left top no-repeat;*/
-	background:#ffffff;
+	background:#ff00ff;
 }
 
 .play:hover {
@@ -58,7 +58,6 @@ div {
 }
 
 .play:active {
-	background:#ff00ff;
 	position:relative;
 	top:1px; left: 1px;
 }
