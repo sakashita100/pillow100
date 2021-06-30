@@ -50,14 +50,15 @@ div {
 	color:#ffffff;
 }
 
+.play:hover {
+	background-color:#ff00ff;
+	/*background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #ffffff) );
+	background:-moz-linear-gradient( center top, #ffa6a6 5%, #ffa6a6 100% );*/
+}
+
 .play:active {
 	background-color:#ffa6a6;
 	position:relative;
 	top:1px; left: 1px;
 }
 
-.play:hover {
-	background-color:#ff00ff;
-	/*background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #ffffff) );
-	background:-moz-linear-gradient( center top, #ffa6a6 5%, #ffa6a6 100% );*/
-}
