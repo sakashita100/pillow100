@@ -57,6 +57,7 @@ div {
 }
 
 .play:active {
+	background-color:#ffff00;
 	position:relative;
 	top:1px; left: 1px;
 }
