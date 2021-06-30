@@ -1,7 +1,5 @@
 body {
     background-color:#ffffff; /* 背景色 */
-    max-width: 90%;
-    margin: 0 auto;
 }
 
 .box {
@@ -9,6 +7,11 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+}
+
+.box p {
+    max-width: 90%;
+    margin: 0 auto;
 }
 
 .elem {
