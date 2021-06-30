@@ -58,8 +58,8 @@ div {
 }
 
 .play:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff9c9c), color-stop(1, #ff9c9c) );
-	background:-moz-linear-gradient( center top, #ff9c9c 5%, #ff9c9c 100% );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffa6a6), color-stop(1, #ffa6a6) );
+	background:-moz-linear-gradient( center top, #ffa6a6 5%, #ffa6a6 100% );
 }
 
 .play:active {
