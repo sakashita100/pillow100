@@ -110,6 +110,7 @@ function play() {
     currentNote = 0;
     document.getElementById("bpm").innerHTML = bpm;
     document.getElementById("area1").innerHTML = '<p><font size="8">stop</font></p>';
+    document.getElementById("target").style.backgroundColor = '#ffa6a6';
     startTimer();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
@@ -121,6 +122,7 @@ function play() {
     document.body.style.backgroundColor = '#ffffff';
     document.getElementById("bpm").innerHTML = 0;
     document.getElementById("area1").innerHTML = '<p><font size="8">play</font></p>';
+    document.getElementById("target").style.backgroundColor = '#ffffff';
     timerWorker.postMessage("stop");
     return "play";
     
