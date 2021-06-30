@@ -6,13 +6,18 @@ div {
     max-width: 90%;
     margin: 0 auto;
     text-align:center;
+    position: relative;
 }
 
 .box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
     /*display: flex;
     justify-content: center;
     align-items: center;*/
@@ -53,7 +58,7 @@ div {
 }
 
 .play:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #ffffff) );
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff9c9c), color-stop(1, #ff9c9c) );
 	background:-moz-linear-gradient( center top, #ffffff 5%, #ffffff 100% );
 }
 
