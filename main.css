@@ -14,7 +14,6 @@ div {
     justify-content: center;
     align-items: center;
     position: relative;
-    background: transparent;
 }
 
 .elem {
@@ -48,16 +47,17 @@ div {
     	width:250px;
    	height:250px;
    	background: url(heart.jpg) left top no-repeat;*/
-	background:#ff00ff;
+	
 }
 
 .play:hover {
-	
+	background:#ff0000;
 	/*background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #ffffff) );
 	background:-moz-linear-gradient( center top, #ffa6a6 5%, #ffa6a6 100% );*/
 }
 
 .play:active {
+	background:#ffff00;
 	position:relative;
 	top:1px; left: 1px;
 }
