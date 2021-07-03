@@ -92,7 +92,7 @@ function scheduler() {
       
       scheduleNote( nextNoteTime );
       nextNote();
-      document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="250" height="250" onclick="play();" >';
+      
   }
 }
 
@@ -126,6 +126,7 @@ function play() {
     document.getElementById("bpm").innerHTML = 0;
     document.getElementById("area1").innerHTML = '<p><font size="10">play</font></p>';
     document.getElementById("target").style.backgroundColor = '#ffffff';
+    document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="250" height="250" onclick="play();" >';
     timerWorker.postMessage("stop");
     return "play";
     
