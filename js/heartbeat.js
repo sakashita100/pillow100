@@ -207,9 +207,9 @@ window.addEventListener('DOMContentLoaded', function(){
       }
     ],
     {
-      duration: 2000,
+      duration: bpm,
       direction: 'alternate',
-      iterations: 2
+      iterations: Infinity
     }
   );
 
