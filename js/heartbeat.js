@@ -67,6 +67,7 @@ function nextNote() {
   var bps = 60 / bpm;
   nextNoteTime += bps;  //最後のビート時間に16分音符の長さのビートを追加する　16分音符 = 0.25 8分音符 = 0.5 をbpsとかける
   currentNote++;  //ビート番号を進めてゼロに折り返す
+  document.getElementById("area1").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="250" height="250" onclick="play();" >';
   if (currentNote == 4) {
       currentNote = 0;
   }
