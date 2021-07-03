@@ -166,7 +166,7 @@ function init(){
     if (e.data == "tick") {
       // console.log("tick!");
       scheduler();
-      document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="300" height="300" onclick="play();" >';
+      //document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="300" height="300" onclick="play();" >';
     }
     else
       console.log("message: " + e.data);
