@@ -61,6 +61,53 @@ var update = function() {
   document.getElementById("bpm").innerHTML = bpm;
 };
 
+function beat_animation() {
+  //心拍アニメーション
+  window.addEventListener('DOMContentLoaded', function(){
+
+  const target = document.getElementById('target');
+  const content1 = document.getElementById('play');
+
+    // KeyframeEffectオブジェクトのインスタンス作成
+    var keyframeeffect = new KeyframeEffect(
+      target,
+      [
+        { // シーン1
+          width: '200px',
+          height: '200px',
+          offset: 0,
+          easing: 'ease'
+        },
+        { // シーン2
+          width: '250px',
+          height: '250px',
+          offset: 0.5
+        },
+        { // シーン3
+          width: '200px',
+          height: '200px',
+          offset: 1
+        }
+      ],
+      {
+        duration: 60 / bpm,
+        direction: 'alternate',
+        iterations: Infinity
+      }
+    );
+
+    // Animationオブジェクトのインスタンス作成
+    var animation = new Animation(keyframeeffect);
+
+    // ボタンが押されたらアニメーション再生
+    target.addEventListener('click', function(e){
+      e.preventDefault();
+      animation.play();
+    });
+  });
+}
+
+
 function nextNote() {
   //現在の音符と時間を次の4分音符に進める
   //nextNoteTime変数とcurrentNote変数の更新
@@ -115,50 +162,7 @@ function play() {
     document.getElementById("bpm").innerHTML = bpm;
     document.getElementById("area1").innerHTML = '<p><font size="10">stop</font></p>';
     document.getElementById("target").style.backgroundColor = '#ffa6a6';
-    //心拍アニメーション
-    window.addEventListener('DOMContentLoaded', function(){
-
-    const target = document.getElementById('target');
-    const content1 = document.getElementById('play');
-
-    // KeyframeEffectオブジェクトのインスタンス作成
-    var keyframeeffect = new KeyframeEffect(
-      target,
-      [
-        { // シーン1
-          width: '200px',
-          height: '200px',
-          offset: 0,
-          easing: 'ease'
-        },
-        { // シーン2
-          width: '250px',
-          height: '250px',
-          offset: 0.5
-        },
-        { // シーン3
-          width: '200px',
-          height: '200px',
-          offset: 1
-        }
-      ],
-      {
-        duration: 60 / bpm,
-        direction: 'alternate',
-        iterations: Infinity
-      }
-    );
-
-    // Animationオブジェクトのインスタンス作成
-    var animation = new Animation(keyframeeffect);
-
-    // ボタンが押されたらアニメーション再生
-    target.addEventListener('click', function(e){
-      e.preventDefault();
-      animation.play();
-    });
-  });
-
+    brat_animation();
     startTimer();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
@@ -219,5 +223,6 @@ function init(){
 }
 
 window.addEventListener("load", init );
+
 
 
