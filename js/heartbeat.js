@@ -84,7 +84,7 @@ function scheduleNote( time ) {
 }
 
 function scheduler() {
-  document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="200" height="200" onclick="play();" >';
+  //document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="200" height="200" onclick="play();" >';
   //オーディオクロックの時間を取得し、次に鳴らすべき音の発音時刻と比較する
   //ほとんどはスケジュールされる音が存在せずに無処理で抜ける
   //存在したらWebAudioAPIを使って次の間隔の前に再生するノートをスケジュールし、ポインターを進める
@@ -167,7 +167,7 @@ function init(){
     if (e.data == "tick") {
       // console.log("tick!");
       scheduler();
-      document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="250" height="250" onclick="play();" >';
+      //document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="250" height="250" onclick="play();" >';
     }
     else
       console.log("message: " + e.data);
@@ -183,7 +183,7 @@ window.addEventListener("load", init );
 window.addEventListener('DOMContentLoaded', function(){
 
   const target = document.getElementById('target');
-  const content1 = document.getElementById('content1');
+  const heart = document.getElementById('heart');
 
   // KeyframeEffectオブジェクトのインスタンス作成
   var keyframeeffect = new KeyframeEffect(
