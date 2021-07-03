@@ -177,3 +177,48 @@ function init(){
 }
 
 window.addEventListener("load", init );
+
+
+//心拍アニメーション
+window.addEventListener('DOMContentLoaded', function(){
+
+  const target = document.getElementById('target');
+  const content1 = document.getElementById('content1');
+
+  // KeyframeEffectオブジェクトのインスタンス作成
+  var keyframeeffect = new KeyframeEffect(
+    content1,
+    [
+      { // シーン1
+        width: '100%',
+        height: '250px',
+        offset: 0,
+        easing: 'ease'
+      },
+      { // シーン2
+        width: '120%',
+        height: '280px',
+        offset: 0.5
+      },
+      { // シーン3
+        width: '100%',
+        height: '250px',
+        offset: 1
+      }
+    ],
+    {
+      duration: 2000,
+      direction: 'alternate',
+      iterations: 2
+    }
+  );
+
+  // Animationオブジェクトのインスタンス作成
+  var animation = new Animation(keyframeeffect);
+
+  // ボタンが押されたらアニメーション再生
+  target.addEventListener('click', function(e){
+    e.preventDefault();
+    animation.play();
+  });
+});
