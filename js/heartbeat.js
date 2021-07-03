@@ -100,9 +100,9 @@ function beat_animation() {
 
     // ボタンが押されたらアニメーション再生
     //target.addEventListener('click', function(e){
-      e.preventDefault();
-      animation.play();
-    });
+    e.preventDefault();
+    animation.play();
+    //});
   });
 }
 
