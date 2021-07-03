@@ -187,7 +187,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
   // KeyframeEffectオブジェクトのインスタンス作成
   var keyframeeffect = new KeyframeEffect(
-    content1,
+    target,
     [
       { // シーン1
         width: '200px',
@@ -217,7 +217,7 @@ window.addEventListener('DOMContentLoaded', function(){
   var animation = new Animation(keyframeeffect);
 
   // ボタンが押されたらアニメーション再生
-  play.addEventListener('click', function(e){
+  target.addEventListener('click', function(e){
     e.preventDefault();
     animation.play();
   });
