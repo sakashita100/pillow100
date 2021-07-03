@@ -117,7 +117,6 @@ function play() {
     startTimer();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
-    document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="300" height="300" onclick="play();" >';
     return "stop";
     
   } 
@@ -167,9 +166,11 @@ function init(){
     if (e.data == "tick") {
       // console.log("tick!");
       scheduler();
+      document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="300" height="300" onclick="play();" >';
     }
     else
       console.log("message: " + e.data);
+      document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="250" height="250" onclick="play();" >';
   };
   timerWorker.postMessage({"interval":lookahead});
 }
