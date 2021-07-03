@@ -190,19 +190,19 @@ window.addEventListener('DOMContentLoaded', function(){
     content1,
     [
       { // シーン1
-        width: '100%',
-        height: '250px',
+        width: '50%',
+        height: '50px',
         offset: 0,
         easing: 'ease'
       },
       { // シーン2
-        width: '120%',
-        height: '280px',
+        width: '70%',
+        height: '70px',
         offset: 0.5
       },
       { // シーン3
-        width: '100%',
-        height: '250px',
+        width: '50%',
+        height: '50px',
         offset: 1
       }
     ],
