@@ -61,7 +61,7 @@ var update = function() {
   document.getElementById("bpm").innerHTML = bpm;
 };
 
-function beat_animation() {
+function beat_animation_setup() {
   //心拍アニメーション
   window.addEventListener('DOMContentLoaded', function(){
 
@@ -97,15 +97,11 @@ function beat_animation() {
 
     // Animationオブジェクトのインスタンス作成
     var animation = new Animation(keyframeeffect);
-
-    // ボタンが押されたらアニメーション再生
-    //target.addEventListener('click', function(e){
-    function(e){
+}
+                          
+function beat_animation_play(){
       e.preventDefault();
       animation.play();
-    }
-    //});
-  });
 }
 
 
@@ -148,6 +144,7 @@ function play() {
     var node = context.createBufferSource();
     node.buffer = silentBuffer;
     node.start(0);
+    beat_animation_setup();
     unlocked = true;
   }
 
@@ -159,7 +156,7 @@ function play() {
     document.getElementById("bpm").innerHTML = bpm;
     document.getElementById("area1").innerHTML = '<p><font size="10">stop</font></p>';
     document.getElementById("target").style.backgroundColor = '#ffa6a6';
-    beat_animation();
+    beat_animation_play();
     startTimer();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
@@ -174,6 +171,7 @@ function play() {
     document.getElementById("target").style.backgroundColor = '#ffffff';
     document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" onclick="play();" >';
     timerWorker.postMessage("stop");
+    beat_animation_setup();
     return "play";
     
     
