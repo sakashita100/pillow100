@@ -70,6 +70,7 @@ function nextNote() {
   document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="200" height="200" onclick="play();" >';
   if (currentNote == 4) {
       currentNote = 0;
+      document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="250" height="250" onclick="play();" >';
   }
 }
 
