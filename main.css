@@ -20,6 +20,11 @@ div {
     position: relative;
 }*/
 
+.heart {
+    width: 100%;
+    height: 250px;
+}
+
 .elem {
     position: absolute;
     top: 50%;
