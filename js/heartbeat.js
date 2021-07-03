@@ -115,6 +115,50 @@ function play() {
     document.getElementById("bpm").innerHTML = bpm;
     document.getElementById("area1").innerHTML = '<p><font size="10">stop</font></p>';
     document.getElementById("target").style.backgroundColor = '#ffa6a6';
+    //心拍アニメーション
+    window.addEventListener('DOMContentLoaded', function(){
+
+    const target = document.getElementById('target');
+    const content1 = document.getElementById('play');
+
+    // KeyframeEffectオブジェクトのインスタンス作成
+    var keyframeeffect = new KeyframeEffect(
+      target,
+      [
+        { // シーン1
+          width: '200px',
+          height: '200px',
+          offset: 0,
+          easing: 'ease'
+        },
+        { // シーン2
+          width: '250px',
+          height: '250px',
+          offset: 0.5
+        },
+        { // シーン3
+          width: '200px',
+          height: '200px',
+          offset: 1
+        }
+      ],
+      {
+        duration: 60 / bpm,
+        direction: 'alternate',
+        iterations: Infinity
+      }
+    );
+
+    // Animationオブジェクトのインスタンス作成
+    var animation = new Animation(keyframeeffect);
+
+    // ボタンが押されたらアニメーション再生
+    target.addEventListener('click', function(e){
+      e.preventDefault();
+      animation.play();
+    });
+  });
+
     startTimer();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
@@ -167,11 +211,9 @@ function init(){
     if (e.data == "tick") {
       // console.log("tick!");
       scheduler();
-      //document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="250" height="250" onclick="play();" >';
     }
     else
       console.log("message: " + e.data);
-      //document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="250" height="250" onclick="play();" >';
   };
   timerWorker.postMessage({"interval":lookahead});
 }
@@ -179,46 +221,3 @@ function init(){
 window.addEventListener("load", init );
 
 
-//心拍アニメーション
-window.addEventListener('DOMContentLoaded', function(){
-
-  const target = document.getElementById('target');
-  const content1 = document.getElementById('play');
-
-  // KeyframeEffectオブジェクトのインスタンス作成
-  var keyframeeffect = new KeyframeEffect(
-    target,
-    [
-      { // シーン1
-        width: '200px',
-        height: '200px',
-        offset: 0,
-        easing: 'ease'
-      },
-      { // シーン2
-        width: '250px',
-        height: '250px',
-        offset: 0.5
-      },
-      { // シーン3
-        width: '200px',
-        height: '200px',
-        offset: 1
-      }
-    ],
-    {
-      duration: bpm / 4,
-      direction: 'alternate',
-      iterations: Infinity
-    }
-  );
-
-  // Animationオブジェクトのインスタンス作成
-  var animation = new Animation(keyframeeffect);
-
-  // ボタンが押されたらアニメーション再生
-  target.addEventListener('click', function(e){
-    e.preventDefault();
-    animation.play();
-  });
-});
