@@ -138,13 +138,13 @@ function scheduler() {
 }
 
 function play() {
+  beat_animation_setup();
   if (!unlocked) {
     //サイレントバッファを再生してオーディオのロックを解除します
     var silentBuffer = context.createBuffer(1, 1, 22050);
     var node = context.createBufferSource();
     node.buffer = silentBuffer;
     node.start(0);
-    beat_animation_setup();
     unlocked = true;
   }
 
@@ -171,7 +171,6 @@ function play() {
     document.getElementById("target").style.backgroundColor = '#ffffff';
     document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" onclick="play();" >';
     timerWorker.postMessage("stop");
-    beat_animation_setup();
     return "play";
     
     
