@@ -76,7 +76,6 @@ function beat_animation() {
           width: '200px',
           height: '200px',
           offset: 0,
-          easing: 'ease'
         },
         { // シーン2
           width: '250px',
@@ -100,7 +99,7 @@ function beat_animation() {
     var animation = new Animation(keyframeeffect);
 
     // ボタンが押されたらアニメーション再生
-    target.addEventListener('click', function(e){
+    //target.addEventListener('click', function(e){
       e.preventDefault();
       animation.play();
     });
@@ -114,7 +113,6 @@ function nextNote() {
   var bps = 60 / bpm;
   nextNoteTime += bps;  //最後のビート時間に16分音符の長さのビートを追加する　16分音符 = 0.25 8分音符 = 0.5 をbpsとかける
   currentNote++;  //ビート番号を進めてゼロに折り返す
-  //document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="200" height="200" onclick="play();" >';
   if (currentNote == 4) {
       currentNote = 0;
   }
@@ -131,16 +129,13 @@ function scheduleNote( time ) {
 }
 
 function scheduler() {
-  //document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="200" height="200" onclick="play();" >';
   //オーディオクロックの時間を取得し、次に鳴らすべき音の発音時刻と比較する
   //ほとんどはスケジュールされる音が存在せずに無処理で抜ける
   //存在したらWebAudioAPIを使って次の間隔の前に再生するノートをスケジュールし、ポインターを進める
   //この関数はlookaheadで設定したミリ秒ごとに呼ばれる
   while (nextNoteTime < context.currentTime + scheduleAheadTime ) {
-      
       scheduleNote( nextNoteTime );
       nextNote();
-      
   }
 }
 
@@ -162,7 +157,7 @@ function play() {
     document.getElementById("bpm").innerHTML = bpm;
     document.getElementById("area1").innerHTML = '<p><font size="10">stop</font></p>';
     document.getElementById("target").style.backgroundColor = '#ffa6a6';
-    brat_animation();
+    beat_animation();
     startTimer();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
