@@ -183,7 +183,7 @@ window.addEventListener("load", init );
 window.addEventListener('DOMContentLoaded', function(){
 
   const target = document.getElementById('target');
-  const play = document.getElementById('play');
+  const content1 = document.getElementById('play');
 
   // KeyframeEffectオブジェクトのインスタンス作成
   var keyframeeffect = new KeyframeEffect(
