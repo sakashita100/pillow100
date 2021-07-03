@@ -127,7 +127,7 @@ function play() {
     document.getElementById("bpm").innerHTML = 0;
     document.getElementById("area1").innerHTML = '<p><font size="10">play</font></p>';
     document.getElementById("target").style.backgroundColor = '#ffffff';
-    document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="200" height="200" onclick="play();" >';
+    document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" onclick="play();" >';
     timerWorker.postMessage("stop");
     return "play";
     
