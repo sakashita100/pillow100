@@ -170,7 +170,7 @@ function init(){
     }
     else
       console.log("message: " + e.data);
-      document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="250" height="250" onclick="play();" >';
+      //document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="250" height="250" onclick="play();" >';
   };
   timerWorker.postMessage({"interval":lookahead});
 }
