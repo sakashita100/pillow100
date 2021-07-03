@@ -67,9 +67,10 @@ function nextNote() {
   var bps = 60 / bpm;
   nextNoteTime += bps;  //最後のビート時間に16分音符の長さのビートを追加する　16分音符 = 0.25 8分音符 = 0.5 をbpsとかける
   currentNote++;  //ビート番号を進めてゼロに折り返す
-  document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="250" height="250" onclick="play();" >';
+  document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="300" height="300" onclick="play();" >';
   if (currentNote == 4) {
       currentNote = 0;
+      document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="250" height="250" onclick="play();" >';
   }
 }
 
@@ -89,7 +90,7 @@ function scheduler() {
   //存在したらWebAudioAPIを使って次の間隔の前に再生するノートをスケジュールし、ポインターを進める
   //この関数はlookaheadで設定したミリ秒ごとに呼ばれる
   while (nextNoteTime < context.currentTime + scheduleAheadTime ) {
-      document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="300" height="300" onclick="play();" >';
+      
       scheduleNote( nextNoteTime );
       nextNote();
   }
