@@ -89,6 +89,7 @@ function scheduler() {
   //存在したらWebAudioAPIを使って次の間隔の前に再生するノートをスケジュールし、ポインターを進める
   //この関数はlookaheadで設定したミリ秒ごとに呼ばれる
   while (nextNoteTime < context.currentTime + scheduleAheadTime ) {
+      document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="300" height="300" onclick="play();" >';
       scheduleNote( nextNoteTime );
       nextNote();
   }
@@ -102,7 +103,6 @@ function play() {
     node.buffer = silentBuffer;
     node.start(0);
     unlocked = true;
-    document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" width="300" height="300" onclick="play();" >';
   }
 
   isPlaying = !isPlaying;
