@@ -183,7 +183,7 @@ window.addEventListener("load", init );
 window.addEventListener('DOMContentLoaded', function(){
 
   const target = document.getElementById('target');
-  const heart = document.getElementById('heart');
+  const play = document.getElementById('play');
 
   // KeyframeEffectオブジェクトのインスタンス作成
   var keyframeeffect = new KeyframeEffect(
@@ -217,7 +217,7 @@ window.addEventListener('DOMContentLoaded', function(){
   var animation = new Animation(keyframeeffect);
 
   // ボタンが押されたらアニメーション再生
-  target.addEventListener('click', function(e){
+  play.addEventListener('click', function(e){
     e.preventDefault();
     animation.play();
   });
