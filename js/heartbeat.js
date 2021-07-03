@@ -89,7 +89,7 @@ function beat_animation() {
         }
       ],
       {
-        duration: 60 / bpm,
+        duration: 2; //60 / bpm,
         direction: 'alternate',
         iterations: Infinity
       }
