@@ -172,7 +172,7 @@ window.addEventListener("load", init );
 
 
 
-/*
+
 window.addEventListener('DOMContentLoaded', function(){
 
   const target = document.getElementById('target');
@@ -212,4 +212,4 @@ window.addEventListener('DOMContentLoaded', function(){
     e.preventDefault();
     animation.play();
   });
-});*/
+});
