@@ -115,9 +115,9 @@ function play() {
     document.getElementById("area1").innerHTML = '<p><font size="10">stop</font></p>';
     document.getElementById("target").style.backgroundColor = '#ffa6a6';
     //beat_animation_play();
-    function beat_animation_setup() {
+    //function beat_animation_setup() {
   //心拍アニメーション
-  window.addEventListener('DOMContentLoaded', function(){
+  /*window.addEventListener('DOMContentLoaded', function(){
 
   const target = document.getElementById('target');
   const content1 = document.getElementById('play');
@@ -153,7 +153,8 @@ function play() {
     var animation = new Animation(keyframeeffect);                          
     e.preventDefault();
     animation.play();
-}
+  }*/
+  
     startTimer();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
