@@ -110,7 +110,7 @@ function play() {
     document.body.style.backgroundColor = '#ffa6a6';
     currentNote = 0;
     document.getElementById("bpm").innerHTML = bpm;
-    document.getElementById("area1").innerHTML = '<p><font size="10">stop</font></p>';
+    document.getElementById("area1").innerHTML = '<p><font size="12">stop</font></p>';
     document.getElementById("target").style.backgroundColor = '#ffa6a6';
     startTimer();
     nextNoteTime = context.currentTime;
@@ -121,7 +121,7 @@ function play() {
     stopTimer();
     document.body.style.backgroundColor = '#ffffff';
     document.getElementById("bpm").innerHTML = 0;
-    document.getElementById("area1").innerHTML = '<p><font size="10">play</font></p>';
+    document.getElementById("area1").innerHTML = '<p><font size="12">play</font></p>';
     document.getElementById("target").style.backgroundColor = '#ffffff';
     document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" onclick="play();" >';
     timerWorker.postMessage("stop");
@@ -183,8 +183,8 @@ window.addEventListener('DOMContentLoaded', function(){
     target,
     [
       { // シーン1
-        width: '200px',
-        height: '200px',
+        width: '220px',
+        height: '220px',
         offset: 0,
       },
       { // シーン2
@@ -193,8 +193,8 @@ window.addEventListener('DOMContentLoaded', function(){
         offset: 0.5
       },
       { // シーン3
-        width: '200px',
-        height: '200px',
+        width: '220px',
+        height: '220px',
         offset: 1
       }
     ],
