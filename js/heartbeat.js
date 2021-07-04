@@ -61,8 +61,7 @@ var update = function() {
   document.getElementById("bpm").innerHTML = bpm;
 };
 
-function beat_animation_setup() {
-  //心拍アニメーション
+
   window.addEventListener('DOMContentLoaded', function(){
 
   const target = document.getElementById('target');
@@ -97,11 +96,8 @@ function beat_animation_setup() {
 
     // Animationオブジェクトのインスタンス作成
     var animation = new Animation(keyframeeffect);
-}
-                          
-function beat_animation_play(){
-      e.preventDefault();
-      animation.play();
+    e.preventDefault();
+    animation.play();
 }
 
 
