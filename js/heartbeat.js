@@ -91,7 +91,7 @@ function beat_animation_setup() {
       {
         duration: 2; //60 / bpm,
         direction: 'alternate',
-        iterations: Infinity
+        iterations: Infinity;
       }
     );
 
