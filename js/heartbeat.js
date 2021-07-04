@@ -62,46 +62,6 @@ var update = function() {
 };
 
 
-window.addEventListener('DOMContentLoaded', function(){
-
-  const target = document.getElementById('target');
-  //const content1 = document.getElementById('play');
-
-  // KeyframeEffectオブジェクトのインスタンス作成
-  var keyframeeffect = new KeyframeEffect(
-    target,
-    [
-      { // シーン1
-        width: '200px',
-        height: '200px',
-        offset: 0,
-      },
-      { // シーン2
-        width: '250px',
-        height: '250px',
-        offset: 0.5
-      },
-      { // シーン3
-        width: '200px',
-        height: '200px',
-        offset: 1
-      }
-    ],
-    {
-      duration: 2; //60 / bpm,
-      direction: 'alternate',
-      iterations: Infinity;
-    }
-  );
-
-  // Animationオブジェクトのインスタンス作成
-  // ボタンが押されたらアニメーション再生
-  target.addEventListener('click', function(e){
-    e.preventDefault();
-    animation.play();
-  });
-});
-
 
 function nextNote() {
   //現在の音符と時間を次の4分音符に進める
@@ -257,3 +217,43 @@ window.addEventListener("load", init );
 
 
 
+
+window.addEventListener('DOMContentLoaded', function(){
+
+  const target = document.getElementById('target');
+  //const content1 = document.getElementById('play');
+
+  // KeyframeEffectオブジェクトのインスタンス作成
+  var keyframeeffect = new KeyframeEffect(
+    target,
+    [
+      { // シーン1
+        width: '200px',
+        height: '200px',
+        offset: 0,
+      },
+      { // シーン2
+        width: '250px',
+        height: '250px',
+        offset: 0.5
+      },
+      { // シーン3
+        width: '200px',
+        height: '200px',
+        offset: 1
+      }
+    ],
+    {
+      duration: 2000; //60 / bpm,
+      direction: 'alternate',
+      iterations: 2;
+    }
+  );
+
+  // Animationオブジェクトのインスタンス作成
+  // ボタンが押されたらアニメーション再生
+  target.addEventListener('click', function(e){
+    e.preventDefault();
+    animation.play();
+  });
+});
