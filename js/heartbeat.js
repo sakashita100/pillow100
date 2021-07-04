@@ -65,7 +65,7 @@ var update = function() {
   window.addEventListener('DOMContentLoaded', function(){
 
   const target = document.getElementById('target');
-  const content1 = document.getElementById('play');
+  //const content1 = document.getElementById('play');
 
   // KeyframeEffectオブジェクトのインスタンス作成
   var keyframeeffect = new KeyframeEffect(
@@ -98,7 +98,7 @@ var update = function() {
   var animation = new Animation(keyframeeffect);
   //e.preventDefault();
   animation.play();
-}
+});
 
 
 function nextNote() {
