@@ -156,7 +156,46 @@ function play() {
     document.getElementById("bpm").innerHTML = bpm;
     document.getElementById("area1").innerHTML = '<p><font size="10">stop</font></p>';
     document.getElementById("target").style.backgroundColor = '#ffa6a6';
-    beat_animation_play();
+    //beat_animation_play();
+    function beat_animation_setup() {
+  //心拍アニメーション
+  window.addEventListener('DOMContentLoaded', function(){
+
+  const target = document.getElementById('target');
+  const content1 = document.getElementById('play');
+
+    // KeyframeEffectオブジェクトのインスタンス作成
+    var keyframeeffect = new KeyframeEffect(
+      target,
+      [
+        { // シーン1
+          width: '200px',
+          height: '200px',
+          offset: 0,
+        },
+        { // シーン2
+          width: '250px',
+          height: '250px',
+          offset: 0.5
+        },
+        { // シーン3
+          width: '200px',
+          height: '200px',
+          offset: 1
+        }
+      ],
+      {
+        duration: 2; //60 / bpm,
+        direction: 'alternate',
+        iterations: Infinity;
+      }
+    );
+
+    // Animationオブジェクトのインスタンス作成
+    var animation = new Animation(keyframeeffect);                          
+    e.preventDefault();
+    animation.play();
+}
     startTimer();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
