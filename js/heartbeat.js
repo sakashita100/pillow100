@@ -110,7 +110,7 @@ function play() {
     document.body.style.backgroundColor = '#ffa6a6';
     currentNote = 0;
     document.getElementById("bpm").innerHTML = bpm;
-    document.getElementById("area1").innerHTML = '<p><font size="12">stop</font></p>';
+    document.getElementById("area1").innerHTML = '<p><font size="15">stop</font></p>';
     document.getElementById("target").style.backgroundColor = '#ffa6a6';
     startTimer();
     nextNoteTime = context.currentTime;
@@ -121,7 +121,7 @@ function play() {
     stopTimer();
     document.body.style.backgroundColor = '#ffffff';
     document.getElementById("bpm").innerHTML = 0;
-    document.getElementById("area1").innerHTML = '<p><font size="12">play</font></p>';
+    document.getElementById("area1").innerHTML = '<p><font size="15">play</font></p>';
     document.getElementById("target").style.backgroundColor = '#ffffff';
     document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" onclick="play();" >';
     timerWorker.postMessage("stop");
@@ -172,7 +172,7 @@ window.addEventListener("load", init );
 
 
 
-
+/*
 window.addEventListener('DOMContentLoaded', function(){
 
   const target = document.getElementById('target');
@@ -212,4 +212,4 @@ window.addEventListener('DOMContentLoaded', function(){
     e.preventDefault();
     animation.play();
   });
-});
+});*/
