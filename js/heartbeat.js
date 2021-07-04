@@ -67,37 +67,37 @@ var update = function() {
   const target = document.getElementById('target');
   const content1 = document.getElementById('play');
 
-    // KeyframeEffectオブジェクトのインスタンス作成
-    var keyframeeffect = new KeyframeEffect(
-      target,
-      [
-        { // シーン1
-          width: '200px',
-          height: '200px',
-          offset: 0,
-        },
-        { // シーン2
-          width: '250px',
-          height: '250px',
-          offset: 0.5
-        },
-        { // シーン3
-          width: '200px',
-          height: '200px',
-          offset: 1
-        }
-      ],
-      {
-        duration: 2; //60 / bpm,
-        direction: 'alternate',
-        iterations: Infinity;
+  // KeyframeEffectオブジェクトのインスタンス作成
+  var keyframeeffect = new KeyframeEffect(
+    target,
+    [
+      { // シーン1
+        width: '200px',
+        height: '200px',
+        offset: 0,
+      },
+      { // シーン2
+        width: '250px',
+        height: '250px',
+        offset: 0.5
+      },
+      { // シーン3
+        width: '200px',
+        height: '200px',
+        offset: 1
       }
-    );
+    ],
+    {
+      duration: 2; //60 / bpm,
+      direction: 'alternate',
+      iterations: Infinity;
+    }
+  );
 
-    // Animationオブジェクトのインスタンス作成
-    var animation = new Animation(keyframeeffect);
-    //e.preventDefault();
-    animation.play();
+  // Animationオブジェクトのインスタンス作成
+  var animation = new Animation(keyframeeffect);
+  //e.preventDefault();
+  animation.play();
 }
 
 
