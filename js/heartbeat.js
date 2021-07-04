@@ -251,6 +251,7 @@ window.addEventListener('DOMContentLoaded', function(){
   );
 
   // Animationオブジェクトのインスタンス作成
+  var animation = new Animation(keyframeeffect);
   // ボタンが押されたらアニメーション再生
   target.addEventListener('click', function(e){
     e.preventDefault();
