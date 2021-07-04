@@ -226,7 +226,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
   // KeyframeEffectオブジェクトのインスタンス作成
   var keyframeeffect = new KeyframeEffect(
-    heart,
+    target,
     [
       { // シーン1
         width: '200px',
