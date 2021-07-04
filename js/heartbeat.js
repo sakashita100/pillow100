@@ -222,11 +222,11 @@ window.addEventListener("load", init );
 window.addEventListener('DOMContentLoaded', function(){
 
   const target = document.getElementById('target');
-  //const content1 = document.getElementById('play');
+  const heart = document.getElementById('heart');
 
   // KeyframeEffectオブジェクトのインスタンス作成
   var keyframeeffect = new KeyframeEffect(
-    target,
+    heart,
     [
       { // シーン1
         width: '200px',
