@@ -62,7 +62,7 @@ var update = function() {
 };
 
 
-  window.addEventListener('DOMContentLoaded', function(){
+window.addEventListener('DOMContentLoaded', function(){
 
   const target = document.getElementById('target');
   //const content1 = document.getElementById('play');
@@ -95,9 +95,11 @@ var update = function() {
   );
 
   // Animationオブジェクトのインスタンス作成
-  var animation = new Animation(keyframeeffect);
-  //e.preventDefault();
-  animation.play();
+  // ボタンが押されたらアニメーション再生
+  target.addEventListener('click', function(e){
+    e.preventDefault();
+    animation.play();
+  });
 });
 
 
