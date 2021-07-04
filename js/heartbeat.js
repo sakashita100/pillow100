@@ -134,7 +134,7 @@ function scheduler() {
 }
 
 function play() {
-  beat_animation_setup();
+  //beat_animation_setup();
   if (!unlocked) {
     //サイレントバッファを再生してオーディオのロックを解除します
     var silentBuffer = context.createBuffer(1, 1, 22050);
