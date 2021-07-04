@@ -96,7 +96,7 @@ var update = function() {
 
     // Animationオブジェクトのインスタンス作成
     var animation = new Animation(keyframeeffect);
-    e.preventDefault();
+    //e.preventDefault();
     animation.play();
 }
 
