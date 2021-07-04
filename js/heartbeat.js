@@ -76,7 +76,6 @@ function nextNote() {
 
 function scheduleNote( time ) {
   //次に鳴らすべきWebAudioの音をスケジューリングする
-  
   //AudioBufferSourceノードを作成して任意の音をここで設定できる
   var source = context.createBufferSource();
   source.buffer = beat;
@@ -96,7 +95,6 @@ function scheduler() {
 }
 
 function play() {
-  //beat_animation_setup();
   if (!unlocked) {
     //サイレントバッファを再生してオーディオのロックを解除します
     var silentBuffer = context.createBuffer(1, 1, 22050);
@@ -114,52 +112,10 @@ function play() {
     document.getElementById("bpm").innerHTML = bpm;
     document.getElementById("area1").innerHTML = '<p><font size="10">stop</font></p>';
     document.getElementById("target").style.backgroundColor = '#ffa6a6';
-    //beat_animation_play();
-    //function beat_animation_setup() {
-  //心拍アニメーション
-  /*window.addEventListener('DOMContentLoaded', function(){
-
-  const target = document.getElementById('target');
-  const content1 = document.getElementById('play');
-
-    // KeyframeEffectオブジェクトのインスタンス作成
-    var keyframeeffect = new KeyframeEffect(
-      target,
-      [
-        { // シーン1
-          width: '200px',
-          height: '200px',
-          offset: 0,
-        },
-        { // シーン2
-          width: '250px',
-          height: '250px',
-          offset: 0.5
-        },
-        { // シーン3
-          width: '200px',
-          height: '200px',
-          offset: 1
-        }
-      ],
-      {
-        duration: 2; //60 / bpm,
-        direction: 'alternate',
-        iterations: Infinity;
-      }
-    );
-
-    // Animationオブジェクトのインスタンス作成
-    var animation = new Animation(keyframeeffect);                          
-    e.preventDefault();
-    animation.play();
-  }*/
-  
     startTimer();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
-    return "stop";
-    
+    return "stop"; 
   } 
   else {
     stopTimer();
@@ -170,8 +126,6 @@ function play() {
     document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" onclick="play();" >';
     timerWorker.postMessage("stop");
     return "play";
-    
-    
   }
 }
 
@@ -218,7 +172,7 @@ window.addEventListener("load", init );
 
 
 
-
+/*
 window.addEventListener('DOMContentLoaded', function(){
 
   const target = document.getElementById('target');
@@ -258,4 +212,4 @@ window.addEventListener('DOMContentLoaded', function(){
     e.preventDefault();
     animation.play();
   });
-});
+});*/
