@@ -16,7 +16,6 @@ var beat = null; //心拍の音を入れる箱
 var data = "70,71,";
 var xhr = new XMLHttpRequest(); 
 xhr.withCredentials = true;
-
 xhr.open('GET', 'https://heartbeat-get.tk/', true);
 
 xhr.onload = function(e) {
