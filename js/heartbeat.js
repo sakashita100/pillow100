@@ -16,7 +16,7 @@ var beat = null; //心拍の音を入れる箱
 var data = "70,71,";
 var xhr = new XMLHttpRequest(); 
 xhr.withCredentials = true;
-xhr.open('GET', 'https://heartbeat-get.tk/beat.txt', true);
+/*xhr.open('GET', 'https://heartbeat-get.tk/beat.txt', true);
 
 xhr.onload = function(e) {
   if (xhr.readyState === 4) {
@@ -27,8 +27,15 @@ xhr.onload = function(e) {
       console.log(data)
     }
   }
-}
+}*/
 //xhr.send(null);
+
+fetch('https://heartbeat-get.tk/beat.txt').then(function(response) {
+  return response.text();
+}).then(function(text) {
+  data = test;
+});
+
 const bpms = data.split(',').map( str => parseInt(str, 10));
 console.log(bpms[0])
 
