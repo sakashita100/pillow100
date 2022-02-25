@@ -24,7 +24,7 @@ xhr.onload = function(e) {
     if (xhr.status === 200) {
       data = xhr.responseText;
       //data = "90,91,";
-      console.log(data)
+      console.log(data);
     }
   }
 }*/
@@ -33,11 +33,12 @@ xhr.onload = function(e) {
 fetch('https://heartbeat-get.tk/beat.txt').then(function(response) {
   return response.text();
 }).then(function(text) {
-  data = test;
+  data = text;
+  console.log(data);
 });
 
 const bpms = data.split(',').map( str => parseInt(str, 10));
-console.log(bpms[0])
+console.log(bpms[0]);
 
 
 var bpm = bpms[0];
