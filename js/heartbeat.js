@@ -39,7 +39,7 @@ xhr.send(null);
 });
 */
 
-const bpms = (String(heartbeat_get())).split(",").map( str => parseInt(str, 10));
+const bpms = data.split(",").map( str => parseInt(str, 10));
 console.log(bpms[0]);
 
 var bpm = bpms[0];
