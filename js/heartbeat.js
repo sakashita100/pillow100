@@ -34,7 +34,7 @@ fetch('https://heartbeat-get.tk/beat.txt').then(function(response) {
   return response.text();
 }).then(function(text) {
   data = text;
-  console.log(data);
+  console.log(text);
   console.log(data);
 });
 
