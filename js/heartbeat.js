@@ -33,7 +33,7 @@ xhr.onload = function(e) {
 fetch('https://heartbeat-get.tk/beat.txt').then(function(response) {
   return response.text();
 }).then(function(text) {
-  var data = text;
+  data = text;
   console.log(data);
 });
 
