@@ -33,11 +33,11 @@ xhr.onload = function(e) {
 fetch('https://heartbeat-get.tk/beat.txt').then(function(response) {
   return response.text();
 }).then(function(text) {
-  var data = String(text);
+  var data = text;
   console.log(data);
 });
 
-const bpms = data.split(",").map( str => parseInt(str, 10));
+const bpms = (String(data)).split(",").map( str => parseInt(str, 10));
 console.log(bpms[0]);
 
 
