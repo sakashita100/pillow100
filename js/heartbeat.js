@@ -35,12 +35,11 @@ fetch('https://heartbeat-get.tk/beat.txt').then(function(response) {
 }).then(function(text) {
   data = text;
   console.log(data);
-  //data = console.log(data);
-//});
+  console.log(data);
+});
 
 const bpms = (String(data)).split(",").map( str => parseInt(str, 10));
 console.log(bpms[0]);
-});
 
 var bpm = bpms[0];
 var count = 0;
