@@ -31,12 +31,12 @@ xhr.onload = function(e) {
 //xhr.send(null);
 
 fetch('https://heartbeat-get.tk/beat.txt').then(function(response) {
-  //return response.text();
+  return response.text();
 }).then(function(text) {
   data = text;
   console.log(text);
   console.log(data);
-});
+
 
 const bpms = (String(data)).split(",").map( str => parseInt(str, 10));
 console.log(bpms[0]);
@@ -44,7 +44,7 @@ console.log(bpms[0]);
 var bpm = bpms[0];
 var count = 0;
 var timer = null;
-
+});
 
 function startTimer() {
   timer = setInterval(update, 3000);
