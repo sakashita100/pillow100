@@ -15,8 +15,8 @@ var data = null; //取得した心拍数
 // var data = "78,78,77,76,78,79,76,78,79,78,76,78,76,79,78,81,82,81,79,78,80,80,81,83,85,86,84,85,87,88,87,89,87,87,87,87,86,81,80,81,87,88,85,83,82,82,81,83,81,79,79,83,79,79,80,";
 
 var xhr = new XMLHttpRequest(); 
-xhr.open('GET', 'https://heartbeat-get.tk/', true); //false);
 xhr.withCredentials = true;
+xhr.open('GET', 'https://heartbeat-get.tk/', false);
 
 xhr.onload = function(e) {
   if (xhr.readyState === 4) {
