@@ -11,13 +11,10 @@ var nextNoteTime = 0.0; //次のメモの期限が来たとき
 var noteLength = 0.05;  //ビープ音の長さ(秒単位)
 var beat = null; //心拍の音を入れる箱
 var data = null; //取得した心拍数
-
 // var data = "78,78,77,76,78,79,76,78,79,78,76,78,76,79,78,81,82,81,79,78,80,80,81,83,85,86,84,85,87,88,87,89,87,87,87,87,86,81,80,81,87,88,85,83,82,82,81,83,81,79,79,83,79,79,80,";
-
-var xhr = new XMLHttpRequest(); 
+var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 xhr.open('GET', 'https://heartbeat-get.tk/', false);
-
 xhr.onload = function(e) {
   if (xhr.readyState === 4) {
     //data = "80,81,";
@@ -30,33 +27,19 @@ xhr.onload = function(e) {
 }
 xhr.send(null);
 
-/*fetch('https://heartbeat-get.tk/beat.txt').then(function(response) {
-  return response.text();
-}).then(function(text) {
-  data = text;
-  console.log(text);
-  console.log(data);
-});
-*/
-
 const bpms = data.split(",").map( str => parseInt(str, 10));
 console.log(bpms[0]);
-
 var bpm = bpms[0];
 var count = 0;
 var timer = null;
-
-
 function startTimer() {
   timer = setInterval(update, 3000);
 }
-
 function stopTimer() {
   clearInterval(timer);
   count = 0;
   bpm = bpms[count];
 }
-
 var update = function() {
   console.log(count);
   if(count < bpms.length) {
@@ -73,7 +56,6 @@ var update = function() {
 };
 
 
-
 function nextNote() {
   //現在の音符と時間を次の4分音符に進める
   //nextNoteTime変数とcurrentNote変数の更新
@@ -87,6 +69,7 @@ function nextNote() {
 
 function scheduleNote( time ) {
   //次に鳴らすべきWebAudioの音をスケジューリングする
+
   //AudioBufferSourceノードを作成して任意の音をここで設定できる
   var source = context.createBufferSource();
   source.buffer = beat;
@@ -116,25 +99,18 @@ function play() {
   }
 
   isPlaying = !isPlaying;
-  
+
   if (isPlaying) { // start playing
-    document.body.style.backgroundColor = '#ffa6a6';
     currentNote = 0;
     document.getElementById("bpm").innerHTML = bpm;
-    document.getElementById("area1").innerHTML = '<p><font size="15">stop</font></p>';
-    document.getElementById("target").style.backgroundColor = '#ffa6a6';
     startTimer();
     nextNoteTime = context.currentTime;
     timerWorker.postMessage("start");
-    return "stop"; 
+    return "stop";
   } 
   else {
     stopTimer();
-    document.body.style.backgroundColor = '#ffffff';
     document.getElementById("bpm").innerHTML = 0;
-    document.getElementById("area1").innerHTML = '<p><font size="15">play</font></p>';
-    document.getElementById("target").style.backgroundColor = '#ffffff';
-    document.getElementById("heart").innerHTML = '<input type="image" id="target" src="heart.png" class="play" alt="button" onclick="play();" >';
     timerWorker.postMessage("stop");
     return "play";
   }
@@ -180,47 +156,3 @@ function init(){
 }
 
 window.addEventListener("load", init );
-
-
-
-/*
-window.addEventListener('DOMContentLoaded', function(){
-
-  const target = document.getElementById('target');
-  const heart = document.getElementById('heart');
-
-  // KeyframeEffectオブジェクトのインスタンス作成
-  var keyframeeffect = new KeyframeEffect(
-    target,
-    [
-      { // シーン1
-        width: '220px',
-        height: '220px',
-        offset: 0,
-      },
-      { // シーン2
-        width: '250px',
-        height: '250px',
-        offset: 0.5
-      },
-      { // シーン3
-        width: '220px',
-        height: '220px',
-        offset: 1
-      }
-    ],
-    {
-      duration: 2000; //60 / bpm,
-      direction: 'alternate',
-      iterations: 2;
-    }
-  );
-
-  // Animationオブジェクトのインスタンス作成
-  var animation = new Animation(keyframeeffect);
-  // ボタンが押されたらアニメーション再生
-  target.addEventListener('click', function(e){
-    e.preventDefault();
-    animation.play();
-  });
-});*/
