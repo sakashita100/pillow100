@@ -20,7 +20,7 @@ xhr.onload = function(e) {
     data = "80,81,";
     if (xhr.status === 200) {
       data = xhr.responseText;
-      data = "90,91,";
+      //data = "90,91,";
       console.log(data);
     }
   }
