@@ -17,7 +17,7 @@ xhr.withCredentials = true;
 xhr.open('GET', 'https://ojwu5eyrmljdzv76bpbonfe4ku0xcibe.lambda-url.ap-northeast-1.on.aws/', false);   // 'https://heartbeat-get.tk/  ,false'
 xhr.onload = function(e) {
   if (xhr.readyState === 4) {
-    data = "80,81,";
+    // data = "80,81,";
     if (xhr.status === 200) {
       data = xhr.responseText;
       //data = "90,91,";
