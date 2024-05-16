@@ -24,12 +24,12 @@ xhr.onload = function(e) {
       console.log(data);
     }
   }
-}
-/*
+/*}
+
 xhr.send(null);
 
-*/const bpms = data.split(",").map( str => parseInt(str, 10));
-console.log(bpms[0]);
+const bpms = data.split(",").map( str => parseInt(str, 10));
+*/console.log(bpms[0]);
 var bpm = bpms[0];
 var count = 0;
 var timer = null;
