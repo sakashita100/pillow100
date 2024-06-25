@@ -55,6 +55,11 @@
         console.error('Connection error: ', err);
         document.getElementById('messages').innerHTML += <p>Error: ${err}</p>;
     });
+  
+  <div style="text-align:center">
+      <p>♥<span id="bpm"></span>bpm</p> 
+      <a class="play" onclick="this.innerText = play();">play</a>
+    </div>
 </script>
 </body>
 </html>
