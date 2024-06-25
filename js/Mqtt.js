@@ -1,5 +1,5 @@
-javascript
-コードをコピーする
+//javascript
+//コードをコピーする
 const mqtt = require('mqtt');
 
 // MQTTブローカーのURL
